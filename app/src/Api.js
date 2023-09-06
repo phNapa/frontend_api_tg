@@ -27,7 +27,7 @@ export default {
             });
           
             const json = await req.json();
-            console.log(json);
+            console.log(req.status);
             return json;
     },
     signUp: async (email, password) => {
@@ -37,7 +37,10 @@ export default {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email, password})
+            body: JSON.stringify({
+                "email": `${email}`,
+                "senha": `${password}`
+            })
         });
         const json = await req.json();
         return json;

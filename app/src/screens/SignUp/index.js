@@ -11,6 +11,8 @@ import {
     SignMessageButtonTextBold
 } from './styles'
 
+import Api from '../../Api';
+
 import SignInput from "../../components/SignInput";
 
 import GymLogo from '../../assets/gym.svg'
@@ -42,8 +44,23 @@ export default () => {
           }
     };
 
-    const handleSignClick = () => {
-        
+    const handleSignClick = async () => {
+        if(emailField != '' && passwordField != ''){
+            let res = await Api.signUp(emailField, passwordField);
+            
+            if(res.insertIdCredentials){
+                alert("Conta criada com sucesso, faça o login!");
+                navigation.reset({
+                    routes: [{name: 'SignIn'}]
+                });
+            } else if (res.error){
+                setError("Email ou senha invalida!");
+                setShowError(true);
+            }
+        } else {
+            setError("Preencha todos os campos!");
+            setShowError(true);
+        }
     };
 
     const handlePress = () => {

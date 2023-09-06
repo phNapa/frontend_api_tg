@@ -12,8 +12,11 @@ export default () => {
     useEffect(()=>{
         const checkToken = async () => {
             const token = await AsyncStorage.getItem('token');
-            if(token !== null){
-
+            if(token){
+                // navigation.reset({
+                //     routes:[{name:'MainTab'}]
+                // });
+                navigation.navigate('SignIn');
             } else{
                 navigation.navigate('SignIn');
             }
