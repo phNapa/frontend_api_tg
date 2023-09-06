@@ -16,7 +16,6 @@ import {
 import Api from '../../Api';
 
 import SignInput from "../../components/SignInput";
-
 import GymLogo from '../../assets/gym.svg'
 import EmailIcon from '../../assets/email.svg'
 import LockIcon from '../../assets/lock.svg'
@@ -35,13 +34,14 @@ export default () => {
         try {
             if(emailField != '' && passwordField != ''){
                 let json = await Api.signIn(emailField,passwordField);
-                console.log(json);
                 if(json.error){
                     setError("Email e/ou senha incorreta!");
                     setShowError(true);
                 } else{
-                    await AsyncStorage.setItem('token',json);
+                    await AsyncStorage.setItem('token', json.token);
                     
+                    await AsyncStorage.setItem('expiracaoToken', json.expiracaoToken.toString());
+
                     navigation.reset({
                         routes:[{name:'MainTab'}]
                     });
@@ -67,6 +67,13 @@ export default () => {
             <GymLogo width="100%" height="160"/>
             
             <InputArea>
+            <CustomButtonText style={{
+                fontSize: 50,       
+                fontWeight: 'bold', 
+                textAlign: 'center',
+                color: '#FF8C78',       
+                marginBottom: 20,   
+            }}>FiTogether</CustomButtonText>
                 <SignInput 
                     IconSvg={EmailIcon}
                     placeholder="Digite seu e-mail"

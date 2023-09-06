@@ -5,6 +5,8 @@ import Preload from "../screens/Preload";
 import SignIn from "../screens/SignIn";
 import SignUp from "../screens/SignUp";
 import MainTab from "./MainTab";
+import CreateProfessor from "../screens/CreateProfessor";
+import CreateAluno from "../screens/CreateAluno";
 
 const Stack = createStackNavigator();
 
@@ -17,6 +19,8 @@ export default () => {
         <Stack.Screen name="Preload" component={Preload} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="CreateProfessor" component={CreateProfessor} />
+        <Stack.Screen name="CreateAluno" component={CreateAluno} />
         <Stack.Screen name="MainTab" component={MainTab} />
     </Stack.Navigator>
   );

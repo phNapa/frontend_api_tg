@@ -12,14 +12,24 @@ export default () => {
     useEffect(()=>{
         const checkToken = async () => {
             const token = await AsyncStorage.getItem('token');
-            if(token){
-                // navigation.reset({
-                //     routes:[{name:'MainTab'}]
-                // });
+
+            if (token) {
+                try {
+                    const expirationDate = await AsyncStorage.getItem('expiracaoToken');
+                  
+                    if (expirationDate && new Date(expirationDate) > new Date()) {
+                        navigation.navigate('SignIn');
+                        // navigation.navigate('MainTab');
+                    } else {
+                    navigation.navigate('SignIn');
+                    }
+                } catch (error) {
+                    console.error('Token parsing error:', error);
+                    navigation.navigate('SignIn');
+                }
+              } else {
                 navigation.navigate('SignIn');
-            } else{
-                navigation.navigate('SignIn');
-            }
+              }
         }
 
         checkToken();
