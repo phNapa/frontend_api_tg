@@ -1,18 +1,7 @@
 const BASE_API = 'http://192.168.0.14:3333';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default {
-    checkToken: async (token) => {
-        // const req = await fetch(`${BASE_API}/auth/refresh`,{
-        //     method: 'POST',
-        //     headers: {
-        //         Accept: 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({token})
-        // });
-        // const json = await req.json();
-        // return json;
-    },
     signIn: async (email, password) => {
             const req = await fetch(`${BASE_API}/auth/login`, {
               method: 'POST',
@@ -41,6 +30,48 @@ export default {
                 "email": `${email}`,
                 "senha": `${password}`
             })
+        });
+        const json = await req.json();
+        return json;
+    },
+    createUserDetails: async(cpf, dataNasc, genero, name, contato, endereco, cidade, isProfessor, userCredentialsID) => {
+        const req = await fetch(`${BASE_API}/userDetails`,{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "cpf": `${cpf}`,
+                "dataNasc": `${dataNasc}`,
+                "genero": `${genero}`,
+                "name": `${name}`,
+                "contato": `${contato}`,
+                "endereco": `${endereco}`,
+                "cidade": `${cidade}`,
+                "isProfessor": `${isProfessor}`,
+                "userCredentialsID": `${userCredentialsID}`
+            })
+            
+        });
+        const json = await req.json();
+        return json;
+    },
+    createProfessor: async(certificacoes, dispoHorario, especialidade, experiencia, userID) => {
+        const req = await fetch(`${BASE_API}/prof`,{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "certificacoes": `${certificacoes}`,
+                "dispoHorario": `${dispoHorario}`,
+                "especialidade": `${especialidade}`,
+                "experiencia": `${experiencia}`,
+                "userID": `${userID}`
+            })
+            
         });
         const json = await req.json();
         return json;

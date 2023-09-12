@@ -39,7 +39,8 @@ export default () => {
                     setShowError(true);
                 } else{
                     await AsyncStorage.setItem('token', json.token);
-                    
+                    await AsyncStorage.setItem('userID', json.userID.toString());
+                    await AsyncStorage.setItem('isProfessor', json.isProfessor.toString());
                     await AsyncStorage.setItem('expiracaoToken', json.expiracaoToken.toString());
 
                     navigation.reset({

@@ -7,6 +7,7 @@ import SignUp from "../screens/SignUp";
 import MainTab from "./MainTab";
 import CreateProfessor from "../screens/CreateProfessor";
 import CreateAluno from "../screens/CreateAluno";
+import CreateUserDetails from "../screens/CreateUserDetails";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default () => {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="CreateProfessor" component={CreateProfessor} />
         <Stack.Screen name="CreateAluno" component={CreateAluno} />
+        <Stack.Screen name="CreateUserDetails" component={CreateUserDetails} />
         <Stack.Screen name="MainTab" component={MainTab} />
     </Stack.Navigator>
   );

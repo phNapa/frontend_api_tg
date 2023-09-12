@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
     Container,
     InputArea,
@@ -52,18 +53,15 @@ export default () => {
     const handleSignClick = async () => {
         if(emailField != '' && passwordField != ''){
             let res = await Api.signUp(emailField, passwordField);
-            
+            await AsyncStorage.setItem('userID', res.insertIdCredentials.toString());
             if(res.insertIdCredentials){
                 alert("Conta criada com sucesso, para finalizar preencha alguns detalhes!");
-                if(isProfessor == true){
-                    navigation.reset({
-                        routes: [{name: 'CreateProfessor'}]
-                    });
-                } else{
-                    navigation.reset({
-                        routes: [{name: 'CreateAluno'}]
-                    });
-                }
+                
+                const isProfessorBoolean = isProfessor ? 1 : 0;
+                await AsyncStorage.setItem('isProfessor', isProfessorBoolean.toString());
+                navigation.reset({
+                    routes: [{name: 'CreateUserDetails'}]
+                });
                 
             } else if (res.error){
                 setError("Email ou senha invalida!");
@@ -91,7 +89,13 @@ export default () => {
             <GymLogo width="100%" height="160"/>
             
             <InputArea>
-
+                <CustomButtonText style={{
+                    fontSize: 30,       
+                    fontWeight: 'bold', 
+                    textAlign: 'center',
+                    color: '#FF8C78',       
+                    marginBottom: 20,   
+                }}>Criação de conta</CustomButtonText>
                 <SignInput 
                     IconSvg={EmailIcon}
                     placeholder="Digite seu e-mail"
