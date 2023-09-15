@@ -75,5 +75,26 @@ export default {
         });
         const json = await req.json();
         return json;
-    }
+    },
+    createAluno: async(altura, nivelExperiencia, objetivos, pesoOrigem, prefHorario, restrMedicas, userID) => {
+        const req = await fetch(`${BASE_API}/aluno`,{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "altura": `${altura}`,
+                "nivelExperiencia": `${nivelExperiencia}`,
+                "objetivos": `${objetivos}`,
+                "pesoOrigem": `${pesoOrigem}`,
+                "prefHorario": `${prefHorario}`,
+                "restrMedicas": `${restrMedicas}`,
+                "userID": `${userID}`
+            })
+            
+        });
+        const json = await req.json();
+        return json;
+    },
 };

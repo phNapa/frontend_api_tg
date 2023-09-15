@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
@@ -31,6 +31,29 @@ export default () => {
     const [showError, setShowError] = useState(false);
     
     const [isProfessor, setIsProfessor] = useState(false);
+
+    const [isValidEmail, setIsValidEmail] = useState(true);
+    const [isValidPassword, setIsValidPassword] = useState(true);
+    
+    const validateEmail = (email) => {
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        return emailRegex.test(email);
+    };
+
+    const handleTextChange = (text) => {
+        setEmailField(text);
+        setIsValidEmail(validateEmail(text));
+    };
+
+    const handlePassChange = (text) => {
+        setPasswordField(text);
+        setIsValidPassword(validatePassword(text));
+    };
+
+    const validatePassword = (password) => {
+       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    };
 
     const toggleProfessor = () => {
         setIsProfessor(!isProfessor);
@@ -84,6 +107,29 @@ export default () => {
         });
     };
 
+    const styles = StyleSheet.create({
+        container: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          borderBottomWidth: 1,
+          borderColor: '#CCCCCC',
+          paddingVertical: 8,
+        },
+        input: {
+          flex: 1,
+          marginLeft: 8,
+          fontSize: 16,
+          color: '#333333',
+        },
+        invalidInput: {
+          borderColor: 'red', // Cor da borda para indicar erro
+        },
+        errorText: {
+          color: 'red',
+          fontSize: 12,
+          marginTop: 4,
+        },
+      });
     return (
         <Container>
             <GymLogo width="100%" height="160"/>
@@ -96,21 +142,29 @@ export default () => {
                     color: '#FF8C78',       
                     marginBottom: 20,   
                 }}>Criação de conta</CustomButtonText>
+
                 <SignInput 
+                    style={[styles.input, !isValidEmail && styles.invalidInput]}
                     IconSvg={EmailIcon}
                     placeholder="Digite seu e-mail"
                     value={emailField}
-                    onChangeText={t=>setEmailField(t)}
+                    onChangeText={handleTextChange}
                 />
+                {!isValidEmail && <Text style={styles.errorText}>Email inválido</Text>}
 
                 <SignInput 
+                    style={[styles.input, !isValidPassword && styles.invalidInput]}
                     IconSvg={LockIcon}
                     placeholder="Digite sua senha"
                     value={passwordField}
-                    onChangeText={t=>setPasswordField(t)}
+                    onChangeText={handlePassChange}
                     password={true}
                 />
-
+                 {!isValidPassword && (
+                    <Text style={styles.errorText}>
+                    A senha deve conter pelo menos 8 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula e um número.
+                    </Text>
+                )}
                 <SignInput 
                     IconSvg={LockIcon}
                     placeholder="Confirme sua senha"
@@ -154,5 +208,8 @@ export default () => {
             </SignMessageButton>
 
         </Container>
+        
     );
+    
+    
 };
