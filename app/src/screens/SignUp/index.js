@@ -122,13 +122,30 @@ export default () => {
           color: '#333333',
         },
         invalidInput: {
-          borderColor: 'red', // Cor da borda para indicar erro
+          borderColor: 'red',
         },
         errorText: {
           color: 'red',
           fontSize: 12,
           marginTop: 4,
         },
+        professorToggle:{
+            width: 30,
+            height: 30,
+            borderWidth: 1,
+            borderRadius:5,
+            borderColor: '#FF8C78',
+            marginTop: 10,
+            marginRight: 10,
+            marginBottom: 25,
+            backgroundColor: isProfessor ? '#FF8C78' : '#FFEFEC',
+        },
+        professorToggleText:{
+            color: '#FF8C78',
+            marginBottom: 25,
+            fontSize: 18,
+            marginTop: 10
+        }
       });
     return (
         <Container>
@@ -179,19 +196,9 @@ export default () => {
                             flexDirection: 'row', 
                             alignItems: 'center' }}>
                         <View
-                            style={{
-                            width: 30,
-                            height: 30,
-                            borderWidth: 1,
-                            borderRadius:5,
-                            borderColor: '#FF8C78',
-                            marginTop: 10,
-                            marginRight: 10,
-                            marginBottom: 25,
-                            backgroundColor: isProfessor ? '#FF8C78' : '#FFEFEC',
-                            }}
+                            style={styles.professorToggle}
                         />
-                        <Text style={{ color: '#FF8C78', marginBottom: 25, fontSize: 18, marginTop: 10 }}>{isProfessor ? 'Sim' : 'Não'}</Text>
+                        <Text style={styles.professorToggleText}>{isProfessor ? 'Sim' : 'Não'}</Text>
                         </View>
                     </TouchableOpacity>
 
