@@ -203,7 +203,7 @@ export default () => {
                     </TouchableOpacity>
 
                 <CustomButton onPress={handlePress}>
-                    <CustomButtonText>CADASTRAR</CustomButtonText>
+                    <CustomButtonText>CONTINUAR</CustomButtonText>
                     
                 </CustomButton>
                 {showError && <Text style={{ color: 'red' }}>{error}</Text>}

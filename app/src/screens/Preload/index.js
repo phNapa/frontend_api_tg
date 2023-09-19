@@ -18,8 +18,8 @@ export default () => {
                     const expirationDate = await AsyncStorage.getItem('expiracaoToken');
                   
                     if (expirationDate && new Date(expirationDate) > new Date()) {
-                        navigation.navigate('SignIn');
-                        // navigation.navigate('MainTab');
+                        //navigation.navigate('SignIn');
+                        navigation.navigate('MainTab');
                     } else {
                     navigation.navigate('SignIn');
                     }
