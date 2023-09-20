@@ -8,6 +8,7 @@ import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 
+
 const CreateUserScreen = () => {
   const [cpf, setCPF] = useState('');
 
@@ -31,8 +32,9 @@ const CreateUserScreen = () => {
     const currentDate = selectedDate || date;
     setShowPicker(false);
     setDate(currentDate);
-    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
-    setDataNasc(formattedDate);
+    const formattedDisplayDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+    const formattedStorageDate = formatDate(currentDate);
+    setDataNasc(formattedStorageDate);
   };
 
   const formatDate = (rawDate) => {
@@ -47,6 +49,46 @@ const CreateUserScreen = () => {
     return `${day}-${month}-${year}`;
   }
     
+  const validarCPF = () => {
+    const cpfLimpo = cpf.replace(/\D/g, '');
+
+    if (cpfLimpo.length !== 11) {
+      setError("CPF inválido.");
+      setShowError(true);
+      return false;
+    }
+
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+      soma += parseInt(cpfLimpo.charAt(i)) * (10 - i);
+    }
+
+    let digito1 = soma % 11;
+    digito1 = digito1 < 2 ? 0 : 11 - digito1;
+
+    if (parseInt(cpfLimpo.charAt(9)) !== digito1) {
+      setError("CPF inválido.");
+      setShowError(true);
+      return false;
+    }
+
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+      soma += parseInt(cpfLimpo.charAt(i)) * (11 - i);
+    }
+
+    let digito2 = soma % 11;
+    digito2 = digito2 < 2 ? 0 : 11 - digito2;
+
+    if (parseInt(cpfLimpo.charAt(10)) !== digito2) {
+      setError("CPF inválido.");
+      setShowError(true);
+      return false;
+    }
+
+    return true;
+  };
+
   const navigation = useNavigation();
   const handleSignClick = async () => {
 
@@ -55,6 +97,7 @@ const CreateUserScreen = () => {
   const userCredentialsID = await AsyncStorage.getItem('userID');
 
   if(cpf != '' && name != ''){
+    console.log(cpf, dataNasc, genero, name, contato, endereco, cidade, isProfessor, userCredentialsID)
       let res = await Api.createUserDetails(cpf, dataNasc, genero, name, contato, endereco, cidade, isProfessor, userCredentialsID);
       if(res.insertId){
           alert("Detalhes preenchidos com sucesso, para finalizar preencha alguns detalhes!");
@@ -182,7 +225,10 @@ const CreateUserScreen = () => {
             onChangeText={(text) => setCidade(text)}
           />
           {showError && <Text style={{ color: 'red' }}>{error}</Text>}
-          <Button title="Próximo" onPress={handleSignClick} color="#FF8C78" />
+          <Button title="Próximo" onPress={() => {
+            if (validarCPF()) {
+                handleSignClick(); 
+            }}} color="#FF8C78" />
         </View>
       </View>
     </ScrollView>
