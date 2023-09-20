@@ -36,17 +36,32 @@ export default () => {
         }
     };
 
+
     const getProfessores = async () => {
         setLoading(true);
         setList([]);
-
-        let res = await Api.getProfessores();
-        if(res.data) {
-            
-            setList(res.data)
-        } else {
-            // Alert("Erro: "+ res.error);
+        console.log(locationText)
+        if(locationText) {
+            console.log('if')
+            let res = await Api.getProfessoresCidade(locationText);
+            if(res.data) {
+                console.log("if "+res.data)
+                setList(res.data)
+            } else {
+                // Alert("Erro: "+ res.error);
+            }
+        } 
+        else {
+            console.log('else')
+            let res = await Api.getProfessores();
+            if(res.data) {
+                console.log("else "+res.data)
+                setList(res.data)
+            } else {
+                // Alert("Erro: "+ res.error);
+            }
         }
+        
 
         setLoading(false);
     };
@@ -80,7 +95,7 @@ export default () => {
                         value={locationText}
                         onChangeText={t=>setLocationText(t)}
                     />
-                    <LocationFinder onPress={handleLocationFinder}>
+                    <LocationFinder onPress={getProfessores}>
                         <MyLocationIcon width="24" height="24" fill="#FF8C78"/>
                     </LocationFinder>
                 </LocationArea>

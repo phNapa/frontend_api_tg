@@ -13,15 +13,19 @@ export default () => {
         const checkToken = async () => {
             const token = await AsyncStorage.getItem('token');
 
-            if (token) {
+            if (token!="invalid") {
                 try {
                     const expirationDate = await AsyncStorage.getItem('expiracaoToken');
                   
                     if (expirationDate && new Date(expirationDate) > new Date()) {
                         // navigation.navigate('SignIn');
-                        navigation.navigate('MainTab');
+                        navigation.reset({
+                            routes: [{name: 'MainTab'}]
+                        });
                     } else {
-                    navigation.navigate('SignIn');
+                        navigation.reset({
+                            routes: [{name: 'SignIn'}]
+                        });
                     }
                 } catch (error) {
                     console.error('Token parsing error:', error);

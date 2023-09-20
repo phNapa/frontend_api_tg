@@ -2,35 +2,55 @@ import React from 'react';
 import styled from 'styled-components/native';
 import AccountIcon from '../assets/account.svg';
 import Stars from '../components/Stars';
-const Area = styled.TouchableOpacity`
+import { useNavigation } from '@react-navigation/native';
+
+const Area = styled.View`
+    border: 1px solid #FF8C78;
     background-color: #FFD6CF;
     margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
     flex-direction: row;
-`;
-
-const InfoArea = styled.View`
-    margin-left: 20px;
     justify-content: space-between;
 `;
 
+const Area2 = styled.View`
+    background-color: #FFD6CF;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const ProfileAndStars = styled.View`
+    flex-direction: column;
+`;
+
+const InfoArea = styled.View`
+    margin-right: 20px;
+`;
+
 const UserName = styled.Text`
-    margin-left: 17px;
     font-weight: bold;
 `;
 
 const Especialidade = styled.Text`
-    margin-left: 17px;
     font-weight: bold;
 `;
 
-const SeeProfileButton = styled.View`
+const Cidade = styled.Text`
+    font-weight: bold;
+`;
+
+const Contato = styled.Text`
+    font-weight: bold;
+`;
+
+const SeeProfileButton = styled.TouchableOpacity`
     width: 85px;
     height: 26px;
     background-color: #FF8C78;
     border: 1px solid #FF8C78;
-    border-radius: 10px;
+    border-radius: 5px;
     justify-content: center;
     align-items: center;
 `;
@@ -41,20 +61,45 @@ const SeeProfileButtonText = styled.Text`
 `;
 
 export default ({data}) => {
+
+    const navigation = useNavigation();
+    const handleClick = () => {
+        navigation.navigate('PerfilProfessor', {
+            userID: data.userID,
+            name: data.name,
+            notaMedia: data.notaMedia,
+            contato: data.contato,
+            cidade: data.cidade,
+            especialidade: data.especialidade,
+            experiencia: data.experiencia,
+            certificacoes: data.certificacoes,
+            dispoHorario: data.dispoHorario
+        });
+    };
+
     return (
         <Area>
-            <AccountIcon width="88" height="88" fill="#FFFFFF"/>
-            <InfoArea>
-                <UserName>{data.name}</UserName>
+            <ProfileAndStars>
+                <AccountIcon width="70" height="70" fill="#FFFFFF"/>
+                <Stars stars={data.notaMedia}/>
+            </ProfileAndStars>
+            <Area2>
+                <InfoArea>
+                    <UserName>{data.name}</UserName>
 
-                <Stars stars={data.notaMedia} showNumber={true}/>
-
-                <Especialidade>{data.especialidade}</Especialidade>
-
-                <SeeProfileButton>
-                    <SeeProfileButtonText>Ver perfil</SeeProfileButtonText>
+                    <Especialidade>{data.especialidade}</Especialidade>
+                    <Contato>{data.contato}</Contato>
+                    <Cidade>{data.cidade}</Cidade>
+                    
+                </InfoArea>
+                
+                <SeeProfileButton onPress={handleClick}>
+                        <SeeProfileButtonText>Ver perfil</SeeProfileButtonText>
                 </SeeProfileButton>
-            </InfoArea>
+                
+                
+            </Area2>
+            
         </Area>
     );
 };
