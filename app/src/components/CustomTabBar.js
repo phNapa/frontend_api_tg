@@ -42,15 +42,15 @@ export default ({ state, navigation}) => {
             <TabItem onPress={()=>goTo('Home')}>
                 <HomeIcon style={{opacity: state.index===0? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
-            <TabItem onPress={()=>goTo('Search')}>
+            {/* <TabItem onPress={()=>goTo('Search')}>
                 <SearchIcon style={{opacity: state.index===1? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
-            </TabItem>
+            </TabItem> */}
             <TabItemCenter onPress={()=>goTo('Appointments')}>
                 <TodayIcon width="50" height="50" fill="#FF8C78" />
             </TabItemCenter>
-            <TabItem onPress={()=>goTo('Favorites')}>
+            {/* <TabItem onPress={()=>goTo('Favorites')}>
                 <FavoriteIcon style={{opacity: state.index===3? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
-            </TabItem>
+            </TabItem> */}
             <TabItem onPress={()=>goTo('Profile')}>
                 <AccountIcon style={{opacity: state.index===4? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>

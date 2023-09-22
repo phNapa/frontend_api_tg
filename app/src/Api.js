@@ -113,7 +113,7 @@ export default {
     getProfessoresCidade: async (cidade) => {
         const token = await AsyncStorage.getItem('token');
         console.log(cidade)
-        const req = await fetch(`${BASE_API}/prof/?cidade=${cidade}`,{
+        const req = await fetch(`${BASE_API}/prof/cidade/${cidade}`,{
             method: 'GET',
             headers: {
                 Accept: 'application/json',

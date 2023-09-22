@@ -18,7 +18,7 @@ export default () => {
                     const expirationDate = await AsyncStorage.getItem('expiracaoToken');
                   
                     if (expirationDate && new Date(expirationDate) > new Date()) {
-                        // navigation.navigate('SignIn');
+                        // navigation.navigate('CreateUserDetails');
                         navigation.reset({
                             routes: [{name: 'MainTab'}]
                         });

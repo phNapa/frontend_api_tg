@@ -207,12 +207,13 @@ export default () => {
                     
                 </CustomButton>
                 {showError && <Text style={{ color: 'red' }}>{error}</Text>}
-            </InputArea>
-
-            <SignMessageButton onPress={handleMessageButtonClick}>
+                <SignMessageButton onPress={handleMessageButtonClick}>
                 <SignMessageButtonText>Já possui uma conta?</SignMessageButtonText>
                 <SignMessageButtonTextBold>Faça Login</SignMessageButtonTextBold>
             </SignMessageButton>
+            </InputArea>
+
+            
 
         </Container>
         

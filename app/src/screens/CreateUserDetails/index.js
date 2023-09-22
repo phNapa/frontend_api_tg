@@ -6,6 +6,7 @@ import Api from '../../Api';
 import GymLogo from '../../assets/gym.svg'
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import cidadesBrasil from './cidadesBrasil';
 
 
 
@@ -148,6 +149,7 @@ const CreateUserScreen = () => {
             placeholderTextColor="#FF8C78"
             backgroundColor="#FFD6CF"
             onChangeText={(text) => setCPF(text)}
+            keyboardType="numeric"
           />
         </View>
 
@@ -202,8 +204,10 @@ const CreateUserScreen = () => {
             placeholderTextColor="#FF8C78"
             backgroundColor="#FFD6CF"
             onChangeText={(text) => setContato(text)}
+            keyboardType="numeric"
           />
         </View>
+
 
         <View width="80%">
           <Text style={styles.text}>Endereço</Text>
@@ -217,19 +221,22 @@ const CreateUserScreen = () => {
         </View>
         <View width="80%">
           <Text style={styles.text}>Cidade</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Insira sua cidade"
-            placeholderTextColor="#FF8C78"
-            backgroundColor="#FFD6CF"
-            onChangeText={(text) => setCidade(text)}
-          />
-          {showError && <Text style={{ color: 'red' }}>{error}</Text>}
-          <Button title="Próximo" onPress={() => {
+          <Picker
+            style={styles.picker}
+            selectedValue={cidade}
+            onValueChange={(itemValue, itemIndex) => setCidade(itemValue)}
+          >
+            <Picker.Item label="Selecione uma cidade" value="" />
+            {cidadesBrasil.map((cidade, index) => (
+              <Picker.Item key={index} label={cidade} value={cidade} />
+            ))}
+          </Picker>
+        </View>
+        {showError && <Text style={{ color: 'red' }}>{error}</Text>}
+        <Button title="Próximo" onPress={() => {
             if (validarCPF()) {
                 handleSignClick(); 
             }}} color="#FF8C78" />
-        </View>
       </View>
     </ScrollView>
   );

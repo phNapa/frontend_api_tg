@@ -60,6 +60,7 @@ const CreateAlunoScreen = () => {
             placeholderTextColor="#FF8C78"
             backgroundColor="#FFD6CF"
             onChangeText={(text) => setAltura(text)}
+            keyboardType="numeric"
           />
         </View>
         
@@ -94,6 +95,7 @@ const CreateAlunoScreen = () => {
             placeholderTextColor="#FF8C78"
             backgroundColor="#FFD6CF"
             onChangeText={(text) => setPesoOrigem(text)}
+            keyboardType="numeric"
           />
         </View>
 

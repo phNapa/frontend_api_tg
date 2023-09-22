@@ -58,9 +58,7 @@ export default () => {
     };
 
     const handleMessageButtonClick = () => {
-        navigation.reset({
-            routes: [{name: 'SignUp'}]
-        });
+        navigation.navigate('SignUp')
     };
 
     return (

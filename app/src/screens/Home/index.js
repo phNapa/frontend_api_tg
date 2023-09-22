@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, RefreshControl } from 'react-native';
+import { Text, RefreshControl, StyleSheet } from 'react-native';
 import { Container, Scroller, HeaderArea, HeaderTitle, SearchButton, LocationArea, LocationInput, LocationFinder, LoadingIcon, ListArea} from './styles';
 import SearchIcon from '../../assets/search.svg'
 import MyLocationIcon from '../../assets/my_location.svg'
@@ -8,42 +8,44 @@ import { request, PERMISSIONS } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
 import ProfessorItem from '../../components/ProfessorItem'
 import Api from '../../Api';
+import {Picker} from '@react-native-picker/picker';
+import cidadesBrasil from '../CreateUserDetails/cidadesBrasil';
 
 export default () => {
 
     const navigation = useNavigation();
 
-    const [locationText, setLocationText] = useState('');
-    const [coords, setCoords] = useState(null);
+    // const [locationText, setLocationText] = useState('');
+    // const [coords, setCoords] = useState(null);
     const [loading, setLoading] = useState(false);
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
+    const [cidade, setCidade] = useState('');
 
-    const handleLocationFinder = async () => {
-        setCoords(null);
-        let result = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+    // const handleLocationFinder = async () => {
+    //     setCoords(null);
+    //     let result = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
     
-        if(result == 'granted') {
+    //     if(result == 'granted') {
 
-            setLoading(true);
-            setLocationText('');
-            setList([]);
+    //         setLoading(true);
+    //         setLocationText('');
+    //         setList([]);
 
-            Geolocation.getCurrentPosition((info)=>{
-                setCoords(info.coords);
-                getProfessores();
-            });
-        }
-    };
+    //         Geolocation.getCurrentPosition((info)=>{
+    //             setCoords(info.coords);
+    //             getProfessores();
+    //         });
+    //     }
+    // };
 
 
     const getProfessores = async () => {
         setLoading(true);
         setList([]);
-        console.log(locationText)
-        if(locationText) {
+        if(cidade) {
             console.log('if')
-            let res = await Api.getProfessoresCidade(locationText);
+            let res = await Api.getProfessoresCidade(cidade);
             if(res.data) {
                 console.log("if "+res.data)
                 setList(res.data)
@@ -83,20 +85,21 @@ export default () => {
             }>
                 <HeaderArea>
                     <HeaderTitle numberOfLines={2}>Encontre o seu professor!</HeaderTitle>
-                    <SearchButton onPress={()=>navigation.navigate('Search')}>
-                        <SearchIcon width="26" height="26" fill="#FF8C78"/>
-                    </SearchButton>
                 </HeaderArea>
 
                 <LocationArea>
-                    <LocationInput
-                        placeholder="Onde você está?"
-                        placeholderTextColor="#FF8C78"
-                        value={locationText}
-                        onChangeText={t=>setLocationText(t)}
-                    />
+                    <Picker
+                        style={styles.picker}
+                        selectedValue={cidade}
+                        onValueChange={(itemValue, itemIndex) => setCidade(itemValue)}
+                    >
+                        <Picker.Item label="Selecione uma cidade" value="" />
+                        {cidadesBrasil.map((cidade, index) => (
+                        <Picker.Item key={index} label={cidade} value={cidade} />
+                        ))}
+                    </Picker>
                     <LocationFinder onPress={getProfessores}>
-                        <MyLocationIcon width="24" height="24" fill="#FF8C78"/>
+                        <MyLocationIcon width="30" height="30" fill="#FF8C78"/>
                     </LocationFinder>
                 </LocationArea>
                 {loading&&
@@ -112,3 +115,14 @@ export default () => {
         </Container>
     );
 };
+
+const styles = StyleSheet.create({
+    picker: {
+      width: '90%',
+      backgroundColor: '#FFD6CF',
+      color: '#FF8C78',
+    },
+    text: {
+      color: '#FF8C78', fontSize: 18
+    }
+});
