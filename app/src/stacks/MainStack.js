@@ -9,6 +9,7 @@ import CreateProfessor from "../screens/CreateProfessor";
 import CreateAluno from "../screens/CreateAluno";
 import CreateUserDetails from "../screens/CreateUserDetails";
 import PerfilProfessor from "../screens/PerfilProfessor";
+import AulaAluno from "../screens/AulaAluno";
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ export default () => {
         <Stack.Screen name="CreateUserDetails" component={CreateUserDetails} />
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="PerfilProfessor" component={PerfilProfessor} />
+        <Stack.Screen name="AulaAluno" component={AulaAluno} />
     </Stack.Navigator>
   );
 };

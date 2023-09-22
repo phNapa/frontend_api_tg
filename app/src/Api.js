@@ -110,9 +110,34 @@ export default {
         const json = await req.json();
         return json;
     },
+    getProfessoresById: async (id) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/prof/${id}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    },
+    getUserProf: async (id) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/prof/user/${id}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    },
     getProfessoresCidade: async (cidade) => {
         const token = await AsyncStorage.getItem('token');
-        console.log(cidade)
         const req = await fetch(`${BASE_API}/prof/cidade/${cidade}`,{
             method: 'GET',
             headers: {
@@ -124,4 +149,17 @@ export default {
         const json = await req.json();
         return json;
     },
+    getAulaUser: async (userID) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/aula/user/${userID}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    }
 };

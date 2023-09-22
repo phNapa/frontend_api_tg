@@ -4,8 +4,6 @@ import { Container, Scroller, HeaderArea, HeaderTitle, SearchButton, LocationAre
 import SearchIcon from '../../assets/search.svg'
 import MyLocationIcon from '../../assets/my_location.svg'
 import { useNavigation } from '@react-navigation/native';
-import { request, PERMISSIONS } from 'react-native-permissions';
-import Geolocation from '@react-native-community/geolocation';
 import ProfessorItem from '../../components/ProfessorItem'
 import Api from '../../Api';
 import {Picker} from '@react-native-picker/picker';
@@ -15,49 +13,26 @@ export default () => {
 
     const navigation = useNavigation();
 
-    // const [locationText, setLocationText] = useState('');
-    // const [coords, setCoords] = useState(null);
     const [loading, setLoading] = useState(false);
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
     const [cidade, setCidade] = useState('');
-
-    // const handleLocationFinder = async () => {
-    //     setCoords(null);
-    //     let result = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
-    
-    //     if(result == 'granted') {
-
-    //         setLoading(true);
-    //         setLocationText('');
-    //         setList([]);
-
-    //         Geolocation.getCurrentPosition((info)=>{
-    //             setCoords(info.coords);
-    //             getProfessores();
-    //         });
-    //     }
-    // };
 
 
     const getProfessores = async () => {
         setLoading(true);
         setList([]);
         if(cidade) {
-            console.log('if')
             let res = await Api.getProfessoresCidade(cidade);
             if(res.data) {
-                console.log("if "+res.data)
                 setList(res.data)
             } else {
                 // Alert("Erro: "+ res.error);
             }
         } 
         else {
-            console.log('else')
             let res = await Api.getProfessores();
             if(res.data) {
-                console.log("else "+res.data)
                 setList(res.data)
             } else {
                 // Alert("Erro: "+ res.error);

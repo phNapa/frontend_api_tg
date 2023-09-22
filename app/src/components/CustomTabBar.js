@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import HomeIcon from '../assets/home.svg';
-import SearchIcon from '../assets/search.svg';
+import HomeIcon from '../assets/search.svg';
 import TodayIcon from '../assets/gym.svg';
-import FavoriteIcon from '../assets/favorite.svg';
 import AccountIcon from '../assets/account.svg';
 
 const TabArea = styled.View`
@@ -42,15 +40,9 @@ export default ({ state, navigation}) => {
             <TabItem onPress={()=>goTo('Home')}>
                 <HomeIcon style={{opacity: state.index===0? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
-            {/* <TabItem onPress={()=>goTo('Search')}>
-                <SearchIcon style={{opacity: state.index===1? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
-            </TabItem> */}
             <TabItemCenter onPress={()=>goTo('Appointments')}>
                 <TodayIcon width="50" height="50" fill="#FF8C78" />
             </TabItemCenter>
-            {/* <TabItem onPress={()=>goTo('Favorites')}>
-                <FavoriteIcon style={{opacity: state.index===3? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
-            </TabItem> */}
             <TabItem onPress={()=>goTo('Profile')}>
                 <AccountIcon style={{opacity: state.index===4? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
