@@ -161,5 +161,24 @@ export default {
         })
         const json = await req.json();
         return json;
-    }
+    },
+    createRequisicao: async(alunoID, professorID, requisicao) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/requisicao`,{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({
+                "alunoID": `${alunoID}`,
+                "professorID": `${professorID}`,
+                "requisicao": `${requisicao}`
+            })
+            
+        });
+        const json = await req.json();
+        return json;
+    },
 };

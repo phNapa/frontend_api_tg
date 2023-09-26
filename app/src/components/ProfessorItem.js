@@ -65,7 +65,6 @@ export default ({data}) => {
     const navigation = useNavigation();
     const handleClick = () => {
         navigation.navigate('PerfilProfessor', {
-            userID: data.userID,
             name: data.name,
             notaMedia: data.notaMedia,
             contato: data.contato,
@@ -73,7 +72,9 @@ export default ({data}) => {
             especialidade: data.especialidade,
             experiencia: data.experiencia,
             certificacoes: data.certificacoes,
-            dispoHorario: data.dispoHorario
+            dispoHorario: data.dispoHorario,
+            professorID: data.professorID,
+            descricao: data.descricao,
         });
     };
 

@@ -52,7 +52,7 @@ const CreateAlunoScreen = () => {
           <Text style={styles.text}>Certificações</Text>
           <TextInput
             style={styles.input}
-            placeholder="Ex. CRM"
+            placeholder="Ex. CREF"
             placeholderTextColor="#FF8C78"
             backgroundColor="#FFD6CF"
             onChangeText={(text) => setCertificacoes(text)}
