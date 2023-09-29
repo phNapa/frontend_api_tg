@@ -63,6 +63,14 @@ export default ({data}) => {
     const navigation = useNavigation();
     const handleClick = () => {
         navigation.navigate('AulaAluno', {
+            aulaID: data.aulaID,
+            treinoID: data.treinoID,
+            titulo: data.titulo,
+            dataAula: data.dataAula,
+            horario: data.horario,
+            localo: data.localo,
+            duracao: data.duracao,
+            finalizado: data.finalizado,
         });
     };
 

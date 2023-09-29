@@ -29,17 +29,6 @@ export default () => {
         setLoading(false);
     };
 
-    const getUserProf = async (userID) => {
-        if (userID) {
-            try {
-              const res = await Api.getUserProf(userID);
-              setProfessores(res);
-            } catch (error) {
-              console.error('Erro ao buscar professores:', error);
-            }
-          }
-    }
-
     useEffect(()=>{
         getAulaUser();
 
