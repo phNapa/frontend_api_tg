@@ -16,7 +16,6 @@ export default {
             });
           
             const json = await req.json();
-            console.log(req.status);
             return json;
     },
     signUp: async (email, password) => {
@@ -178,6 +177,45 @@ export default {
             })
             
         });
+        const json = await req.json();
+        return json;
+    },
+    getProfReqs: async (professorID) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/requisicao/prof/${professorID}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    },
+    getAlunoReqs: async (alunoID) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/requisicao/aluno/${alunoID}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    },
+    getProfAlunos: async (profID) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/aluno/prof/${profID}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
         const json = await req.json();
         return json;
     },

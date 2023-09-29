@@ -42,6 +42,13 @@ export default () => {
                     await AsyncStorage.setItem('userID', json.userID.toString());
                     await AsyncStorage.setItem('isProfessor', json.isProfessor.toString());
                     await AsyncStorage.setItem('expiracaoToken', json.expiracaoToken.toString());
+                    
+                    const isProfessor = await AsyncStorage.getItem('isProfessor');
+                    if (isProfessor == 1){
+                        await AsyncStorage.setItem('professorID', json.professorID.toString());
+                    } else{
+                        await AsyncStorage.setItem('alunoID', json.alunoID.toString());
+                    }
 
                     navigation.reset({
                         routes:[{name:'MainTab'}]

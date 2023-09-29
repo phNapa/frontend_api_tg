@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import HomeIcon from '../assets/search.svg';
 import TodayIcon from '../assets/gym.svg';
 import AccountIcon from '../assets/account.svg';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const TabArea = styled.View`
     height: 60px;
@@ -35,16 +36,39 @@ export default ({ state, navigation}) => {
 
     }
 
+    const ReqsProfOrProfList = async () => {
+        const isProfessor = await AsyncStorage.getItem('isProfessor');
+        
+        if (isProfessor == 1) {
+          goTo('ReqsProf');
+        } else {
+          goTo('Home');
+        }
+    };
+
+    const AlunosListOrAulasList = async () => {
+        const isProfessor = await AsyncStorage.getItem('isProfessor');
+        
+        if (isProfessor == 1) {
+            goTo('MeusAlunosProf');
+        } else {
+            goTo('Appointments');
+        }
+    };
+
+    useEffect(() => {
+        AlunosListOrAulasList();
+      }, []);
     return (
         <TabArea>
-            <TabItem onPress={()=>goTo('Home')}>
-                <HomeIcon style={{opacity: state.index===0? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
+            <TabItem onPress={ReqsProfOrProfList}>
+                <HomeIcon style={{opacity: state.index === 1 || state.index === 5 ? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
-            <TabItemCenter onPress={()=>goTo('Appointments')}>
-                <TodayIcon width="50" height="50" fill="#FF8C78" />
+            <TabItemCenter onPress={AlunosListOrAulasList}>
+                <TodayIcon style={{opacity: state.index === 0 || state.index === 6 ? 1 : 0.5,}} width="50" height="50" fill="#FF8C78" />
             </TabItemCenter>
             <TabItem onPress={()=>goTo('Profile')}>
-                <AccountIcon style={{opacity: state.index===4? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
+                <AccountIcon style={{opacity: state.index===2? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
         </TabArea>
     );

@@ -98,7 +98,6 @@ const CreateUserScreen = () => {
   const userCredentialsID = await AsyncStorage.getItem('userID');
 
   if(cpf != '' && name != ''){
-    console.log(cpf, dataNasc, genero, name, contato, endereco, cidade, isProfessor, userCredentialsID)
       let res = await Api.createUserDetails(cpf, dataNasc, genero, name, contato, endereco, cidade, isProfessor, userCredentialsID);
       if(res.insertId){
           alert("Detalhes preenchidos com sucesso, para finalizar preencha alguns detalhes!");

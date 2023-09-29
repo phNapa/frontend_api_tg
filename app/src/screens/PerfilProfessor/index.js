@@ -16,7 +16,10 @@ export default () => {
 
     
     const handleRequisição = async () => {
-        const alunoID = await AsyncStorage.getItem('userID');
+        const alunoID = await AsyncStorage.getItem('alunoID');
+        console.log(alunoID)
+        console.log(professorID)
+        console.log(textoRequisicao)
         let res = await Api.createRequisicao(alunoID, professorID, textoRequisicao);
 
         if(res.insertId){

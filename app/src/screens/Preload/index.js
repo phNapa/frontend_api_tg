@@ -12,6 +12,7 @@ export default () => {
     useEffect(()=>{
         const checkToken = async () => {
             const token = await AsyncStorage.getItem('token');
+            const isProfessor = await AsyncStorage.getItem('isProfessor');
 
             if (token!="invalid") {
                 try {
@@ -22,6 +23,7 @@ export default () => {
                         navigation.reset({
                             routes: [{name: 'MainTab'}]
                         });
+                        
                     } else {
                         navigation.reset({
                             routes: [{name: 'SignIn'}]

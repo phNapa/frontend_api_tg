@@ -19,7 +19,6 @@ const CreateAlunoScreen = () => {
   const handleSignClick = async () => {
 
   const userID = await AsyncStorage.getItem('userID');
-  console.log(userID)
   if (certificacoes && especialidade && dispoHorario && experiencia) {
   try {
     const res = await Api.createProfessor(certificacoes, dispoHorario, especialidade, experiencia, userID);

@@ -40,7 +40,6 @@ const CreateAlunoScreen = () => {
       setShowError(true);
     }
   } else {
-    console.log(altura, nivelExperiencia, objetivos, pesoOrigem, prefHorario, restrMedicas, userID)
     setError("Preencha todos os campos!");
     setShowError(true);
   }

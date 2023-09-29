@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, RefreshControl, StyleSheet } from 'react-native';
 import { Container, Scroller, HeaderArea, HeaderTitle, SearchButton, LocationArea, LocationInput, LocationFinder, LoadingIcon, ListArea} from './styles';
 import { useNavigation } from '@react-navigation/native';
-import AulaItem from '../../components/AulaItem'
+import ReqItem from '../../components/ReqItem'
 import Api from '../../Api';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -14,12 +14,13 @@ export default () => {
     const [loading, setLoading] = useState(false);
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
-    const getAulaUser = async () => {
+
+    const getProfReqs = async () => {
         const userID = await AsyncStorage.getItem('userID');
         setLoading(true);
         setList([]);
         if(userID) {
-            let res = await Api.getAulaUser(userID);
+            let res = await Api.getProfReqs(userID);
             if(res.data) {
                 setList(res.data)
             } else {
@@ -29,25 +30,14 @@ export default () => {
         setLoading(false);
     };
 
-    const getUserProf = async (userID) => {
-        if (userID) {
-            try {
-              const res = await Api.getUserProf(userID);
-              setProfessores(res);
-            } catch (error) {
-              console.error('Erro ao buscar professores:', error);
-            }
-          }
-    }
 
     useEffect(()=>{
-        getAulaUser();
-
+        getProfReqs();
     }, []);
 
     const onRefresh = () => {
         setRefreshing(false);
-        getAulaUser();
+        getProfReqs();
     }
 
     return(
@@ -56,7 +46,7 @@ export default () => {
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>
             }>
                 <HeaderArea>
-                    <HeaderTitle numberOfLines={2}>Minhas aulas</HeaderTitle>
+                    <HeaderTitle numberOfLines={2}>Minhas requisições</HeaderTitle>
                 </HeaderArea>
 
             
@@ -65,13 +55,13 @@ export default () => {
                 }
 
                 <ListArea>
-                {list.length === 0 ? (
-                    <Text style={styles.text}>Nenhuma aula encontrada, para iniciar suas aulas contate um professor!</Text>
-                ) : (
-                    list.map((item, k) => (
-                    <AulaItem key={k} data={item} />
-                    ))
-                )}
+                    {list.length === 0 ? (
+                        <Text style={styles.text}>Nenhuma requisição encontrada!</Text>
+                    ) : (
+                        list.map((item, k) => (
+                        <ReqItem key={k} data={item} />
+                        ))
+                    )}
                 </ListArea>
 
             </Scroller>

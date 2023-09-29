@@ -10,6 +10,8 @@ import CreateAluno from "../screens/CreateAluno";
 import CreateUserDetails from "../screens/CreateUserDetails";
 import PerfilProfessor from "../screens/PerfilProfessor";
 import AulaAluno from "../screens/AulaAluno";
+import ReqsProf from "../screens/ReqsProf";
+import MeusAlunosProf from "../screens/MeusAlunosProf";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +30,8 @@ export default () => {
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="PerfilProfessor" component={PerfilProfessor} />
         <Stack.Screen name="AulaAluno" component={AulaAluno} />
+        <Stack.Screen name="ReqsProf" component={ReqsProf} />
+        <Stack.Screen name="MeusAlunosProf" component={MeusAlunosProf} />
     </Stack.Navigator>
   );
 };
