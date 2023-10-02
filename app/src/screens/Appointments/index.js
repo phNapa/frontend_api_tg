@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, RefreshControl, StyleSheet } from 'react-native';
-import { Container, Scroller, HeaderArea, HeaderTitle, SearchButton, LocationArea, LocationInput, LocationFinder, LoadingIcon, ListArea} from './styles';
+import { Container, Scroller, HeaderArea, HeaderTitle, LoadingIcon, ListArea} from './styles';
 import { useNavigation } from '@react-navigation/native';
 import AulaItem from '../../components/AulaItem'
 import Api from '../../Api';

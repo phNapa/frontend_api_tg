@@ -13,6 +13,8 @@ import AulaAluno from "../screens/AulaAluno";
 import ReqsProf from "../screens/ReqsProf";
 import MeusAlunosProf from "../screens/MeusAlunosProf";
 import VerReq from "../screens/VerReq";
+import MeuAluno from "../screens/MeuAluno";
+import NovaAula from "../screens/NovaAula";
 
 const Stack = createStackNavigator();
 
@@ -34,6 +36,8 @@ export default () => {
         <Stack.Screen name="ReqsProf" component={ReqsProf} />
         <Stack.Screen name="MeusAlunosProf" component={MeusAlunosProf} />
         <Stack.Screen name="VerReq" component={VerReq} />
+        <Stack.Screen name="MeuAluno" component={MeuAluno} />
+        <Stack.Screen name="NovaAula" component={NovaAula} />
     </Stack.Navigator>
   );
 };

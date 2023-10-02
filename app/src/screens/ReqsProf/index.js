@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import ReqItem from '../../components/ReqItem'
 import Api from '../../Api';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Picker} from '@react-native-picker/picker';
+import cidadesBrasil from '../CreateUserDetails/cidadesBrasil';
 
 export default () => {
 
@@ -14,6 +16,14 @@ export default () => {
     const [loading, setLoading] = useState(false);
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
+    const [cidadeSelecionada, setCidadeSelecionada] = useState('');
+
+    const listaFiltrada = list.filter((item) => {
+        if (cidadeSelecionada === '') {
+          return true;
+        }
+        return item.cidade === cidadeSelecionada;
+    });
 
     const getProfReqs = async () => {
         const professorID = await AsyncStorage.getItem('professorID');
@@ -48,17 +58,30 @@ export default () => {
                 <HeaderArea>
                     <HeaderTitle numberOfLines={2}>Minhas requisições</HeaderTitle>
                 </HeaderArea>
-
+                <LocationArea>
+                    <Picker
+                        selectedValue={cidadeSelecionada}
+                        onValueChange={(itemValue, itemIndex) => {
+                            setCidadeSelecionada(itemValue);
+                        }}
+                        style={styles.picker}
+                        >
+                        <Picker.Item label="Filtrar por cidade" value="" />
+                        {cidadesBrasil.map((cidade, index) => (
+                        <Picker.Item key={index} label={cidade} value={cidade} />
+                        ))}
+                    </Picker>
+                </LocationArea>
             
                 {loading&&
                 <LoadingIcon size="large" color="#FF8C78"/>
                 }
 
                 <ListArea>
-                    {list.length === 0 ? (
+                    {listaFiltrada.length === 0 ? (
                         <Text style={styles.text}>Nenhuma requisição encontrada!</Text>
                     ) : (
-                        list.map((item, k) => (
+                        listaFiltrada.map((item, k) => (
                         <ReqItem key={k} data={item} />
                         ))
                     )}
@@ -70,6 +93,11 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
+    picker: {
+        width: '90%',
+        backgroundColor: '#FFD6CF',
+        color: '#FF8C78',
+    },
     text: {
       color: '#FF8C78', fontSize: 20
     }

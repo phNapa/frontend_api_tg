@@ -51,7 +51,6 @@ export default () => {
     const deletarReq = async () => {
       // let res = await Api.deleteRequisicaoo(id);
       alert("Requisição recusada!");
-      console.log(id)
       
       navigation.reset({
         routes:[{name:'ReqsProf'}]
@@ -81,7 +80,7 @@ export default () => {
           <Texts>Contato: {contatoAluno}</Texts>
           <Texts>Cidade: {cidadeAluno}</Texts>
           <Texts>Objetivo: {objetivoAluno}</Texts>
-          <Texts>Peso: {pesoAluno}</Texts>
+          <Texts>Peso: {pesoAluno} Kg</Texts>
           <Texts>Altura: {alturaAluno}</Texts>
           <Texts>IMC: {imcAluno}</Texts>
           

@@ -38,7 +38,7 @@ export const Buttons = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 5px;
   margin: 5px;
-  margin-left: 70%;
+  margin-left:35%;
 `;
 
 export const ButtonTitle = styled.Text`
@@ -53,11 +53,37 @@ export const Texts = styled.Text`
     color: #FF8C78;
     padding-left: 20px;
 `;
+export const TextsInputMenor = styled.TextInput`
+    font-size: 16px;
+    color: #FF8C78;
+    border: 2px solid #FF8C78;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 25%;
+    width: 40%;
+`;
+
+export const TextsInputMaior = styled.TextInput`
+    font-size: 16px;
+    color: #FF8C78;
+    border: 2px solid #FF8C78;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 95%;
+`;
+
+export const InputArea = styled.View`
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: space-between;
+`;
 
 export const NameTitle = styled.Text`
     font-size: 27px;
     font-weight: bold;
     color: #FF8C78;
+    padding-left: 20px;
 `;
 
 export const ReqArea = styled.View`

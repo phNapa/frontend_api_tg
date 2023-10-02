@@ -12,6 +12,7 @@ const Area = styled.View`
     padding: 15px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 `;
 
 const Area2 = styled.View`
@@ -64,25 +65,19 @@ export default ({data}) => {
 
     const navigation = useNavigation();
     const handleClick = () => {
-        // navigation.navigate('PerfilProfessor', {
-        //     name: data.name,
-        //     notaMedia: data.notaMedia,
-        //     contato: data.contato,
-        //     cidade: data.cidade,
-        //     especialidade: data.especialidade,
-        //     experiencia: data.experiencia,
-        //     certificacoes: data.certificacoes,
-        //     dispoHorario: data.dispoHorario,
-        //     professorID: data.professorID,
-        //     descricao: data.descricao,
-        // });
+        navigation.navigate('MeuAluno', {
+            alunoID: data.alunoID,
+            name: data.name,
+            contato: data.contato,
+            cidade: data.cidade,
+        });
     };
 
     return (
         <Area>
+            <AccountIcon width="70" height="70" fill="#FFFFFF"/>
             <Area2>
                 <InfoArea>
-                    <UserName>{data.alunoID}</UserName>
                     <UserName>{data.name}</UserName>
                     <Contato>{data.contato}</Contato>
                     <Cidade>{data.cidade}</Cidade>

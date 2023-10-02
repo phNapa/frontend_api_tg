@@ -11,6 +11,8 @@ import AulaAluno from '../screens/AulaAluno';
 import ReqsProf from '../screens/ReqsProf';
 import MeusAlunosProf from '../screens/MeusAlunosProf';
 import VerReq from "../screens/VerReq";
+import MeuAluno from '../screens/MeuAluno';
+import NovaAula from '../screens/NovaAula';
 
 
 const Tab = createBottomTabNavigator();
@@ -29,6 +31,8 @@ export default () => {
         <Tab.Screen name="ReqsProf" component={ReqsProf} />
         <Tab.Screen name="MeusAlunosProf" component={MeusAlunosProf} />
         <Tab.Screen name="VerReq" component={VerReq} />
+        <Tab.Screen name="MeuAluno" component={MeuAluno} />
+        <Tab.Screen name="NovaAula" component={NovaAula} />
     </Tab.Navigator>
     );
 };
