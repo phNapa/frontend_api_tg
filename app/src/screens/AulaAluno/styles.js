@@ -26,6 +26,17 @@ export const Buttons = styled.TouchableOpacity`
   margin: 5px;
 `;
 
+export const ButtonsModal = styled.TouchableOpacity`
+  background-color: ${(props) => (props.disabled ? '#ccc' : '#FF8C78')};
+  width: 50%;
+  height: 5%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-left: 25%;
+  margin-bottom: 10px;
+`;
+
 export const ButtonTitle = styled.Text`
     font-size: 18px;
     font-weight: bold;
@@ -86,7 +97,17 @@ export const ModalArea = styled.View`
 export const ReqInput = styled.TextInput`
     border: 3px solid #FF8C78;
     border-radius: 10px;
-    height: 30%;
+    height: 20%;
+    font-size: 16px;
+    color: #FF8C78;
+    padding: 10px;
+    margin: 15px;
+`;
+
+export const NotasInput = styled.TextInput`
+    border: 3px solid #FF8C78;
+    border-radius: 10px;
+    height: 7%;
     font-size: 16px;
     color: #FF8C78;
     padding: 10px;

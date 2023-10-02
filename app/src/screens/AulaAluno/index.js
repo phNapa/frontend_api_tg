@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, TextInput, FlatList } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import Api from '../../Api';
-import { Container, HeaderTitle, Area1, Area2, Buttons, Cronometro, CronometroText, Texts, ExericioArea, ButtonTitle, ReqInput, ModalArea} from './styles';
+import { Container, HeaderTitle, Area1, Area2, Buttons, Cronometro, CronometroText, Texts, ExericioArea, ButtonTitle, ReqInput, ModalArea, ButtonsModal, NotasInput} from './styles';
 import Modal from 'react-native-modal';
 
 const ExerciseScreen = () => {
+  const navigation = useNavigation();
   const route = useRoute();
   const [isModalVisible, setModalVisible] = useState(false);
   const { aulaID, treinoID, titulo, dataAula, horario, localo, duracao, finalizado} = route.params;
@@ -17,6 +18,9 @@ const ExerciseScreen = () => {
   const [restTime, setRestTime] = useState('');
   const [exerciseList, setExerciseList] = useState([]);
   const [textoDificuldades, setTextoDificuldades] = useState('');
+  const [notaAula, setNotaAula] = useState('');
+  const [notaProf, setNotaProfessor] = useState('');
+  const [pesoAtual, setPesoAtual] = useState('');
   const buttonText = finalizado === 1 ? 'Finalizado' : 'Finalizar';
   useEffect(() => {
     setLessonName(route.params.lessonName);
@@ -61,8 +65,18 @@ const ExerciseScreen = () => {
     setIsTimerRunning(false);
   };
 
-  const finishTraining = () => {
+  const finishTraining = async () => {
     setTotalSeconds(0)
+    const duracaototal = formatTime(totalSeconds)
+    const finalizar = 1
+    console.log(aulaID, textoDificuldades, duracaototal, 1, notaAula, notaProf, pesoAtual)
+    let res = await Api.putFinalizarAula(aulaID, textoDificuldades, duracaototal, finalizar, notaAula, notaProf, pesoAtual);
+    alert("Aula Finalizada com sucesso!");
+    
+    setModalVisible(false);
+    navigation.reset({
+      routes:[{name:'Appointments'}]
+    });
   };
 
   const formatTime = (seconds) => {
@@ -122,15 +136,44 @@ const ExerciseScreen = () => {
           <ModalArea>
             <HeaderTitle>Finalizar aula</HeaderTitle>
             <Texts>Tempo total: {formatTime(totalSeconds)}</Texts>
+            
+            <Texts>Nota da Aula (0-5)</Texts>
+            <NotasInput
+              placeholder="0-5"
+              onChangeText={(text) => setNotaAula(text)}
+              keyboardType="numeric"
+            />
+            
+            <Texts>Nota do Professor (0-5)</Texts>
+            <NotasInput
+              placeholder="0-5"
+              onChangeText={(text) => setNotaProfessor(text)}
+              keyboardType="numeric"
+            />
+
+            <Texts>Peso Atual</Texts>
+            <NotasInput
+              placeholder="Peso atual"
+              onChangeText={(text) => setPesoAtual(text)}
+              keyboardType="numeric"
+            />
+            
             <Texts>Comentários/Dificuldades</Texts>
             <ReqInput 
               placeholder="Ex. Não consegui seguir com todas as séries"
               onChangeText={(text) => setTextoDificuldades(text)}
-              multiline={true}/>
-            <Button color="#FF8C78" title="Finalizar e Enviar" onPress={finishTraining} />
-            <Button color="#FF8C78" title="Cancelar" onPress={() => setModalVisible(false)} />
+              multiline={true}
+            />
+            <ButtonsModal color="#FF8C78" onPress={finishTraining}>
+              <ButtonTitle>Finalizar e Enviar</ButtonTitle>
+            </ButtonsModal>
+
+            <ButtonsModal color="#FF8C78" onPress={() => setModalVisible(false)}>
+              <ButtonTitle>Cancelar</ButtonTitle>
+            </ButtonsModal>
           </ModalArea>
         </Modal>
+
 
     </Container>
   );

@@ -232,4 +232,26 @@ export default {
         const json = await req.json();
         return json;
     },
+    putFinalizarAula: async(aulaID, dificuldades, duracao, finalizado, notaAula, notaProf, pesoAtual) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/aula/finalizar/${aulaID}`,{
+            method: 'PUT',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({
+                "dificuldades": `${dificuldades}`,
+                "duracao": `${duracao}`,
+                "finalizado": `${finalizado}`,
+                "notaAula": `${notaAula}`,
+                "notaProf": `${notaProf}`,
+                "pesoAtual": `${pesoAtual}`
+            })
+            
+        });
+        // const json = await req.json();
+        // return json;
+    },
 };
