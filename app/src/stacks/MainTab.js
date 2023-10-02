@@ -10,6 +10,7 @@ import PerfilProfessor from '../screens/PerfilProfessor';
 import AulaAluno from '../screens/AulaAluno';
 import ReqsProf from '../screens/ReqsProf';
 import MeusAlunosProf from '../screens/MeusAlunosProf';
+import VerReq from "../screens/VerReq";
 
 
 const Tab = createBottomTabNavigator();
@@ -27,6 +28,7 @@ export default () => {
         <Tab.Screen name="AulaAluno" component={AulaAluno} />
         <Tab.Screen name="ReqsProf" component={ReqsProf} />
         <Tab.Screen name="MeusAlunosProf" component={MeusAlunosProf} />
+        <Tab.Screen name="VerReq" component={VerReq} />
     </Tab.Navigator>
     );
 };

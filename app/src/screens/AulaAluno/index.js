@@ -69,7 +69,6 @@ const ExerciseScreen = () => {
     setTotalSeconds(0)
     const duracaototal = formatTime(totalSeconds)
     const finalizar = 1
-    console.log(aulaID, textoDificuldades, duracaototal, 1, notaAula, notaProf, pesoAtual)
     let res = await Api.putFinalizarAula(aulaID, textoDificuldades, duracaototal, finalizar, notaAula, notaProf, pesoAtual);
     alert("Aula Finalizada com sucesso!");
     
@@ -107,9 +106,10 @@ const ExerciseScreen = () => {
           </Cronometro>
           
           <Area2>
-            <Buttons onPress={startTimer} disabled={isTimerRunning}>
+            <Buttons onPress={startTimer} disabled={isTimerRunning || finalizado === 1}>
               <ButtonTitle>Iniciar Aula</ButtonTitle>
             </Buttons>
+
             <Buttons onPress={stopTimer} disabled={!isTimerRunning}>
               <ButtonTitle>Pausar</ButtonTitle>
             </Buttons>

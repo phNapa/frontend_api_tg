@@ -112,7 +112,7 @@ const CreateAlunoScreen = () => {
         </View>
 
         <View width="80%">
-          <Text style={styles.text}>Preferência de Horário</Text>
+          <Text style={styles.text}>Restrições Médicas</Text>
           <TextInput
             style={styles.input}
             placeholder="Restrições Médicas"

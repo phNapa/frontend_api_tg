@@ -16,11 +16,11 @@ export default () => {
     const [refreshing, setRefreshing] = useState(false);
 
     const getProfReqs = async () => {
-        const userID = await AsyncStorage.getItem('userID');
+        const professorID = await AsyncStorage.getItem('professorID');
         setLoading(true);
         setList([]);
-        if(userID) {
-            let res = await Api.getProfReqs(userID);
+        if(professorID) {
+            let res = await Api.getProfReqs(professorID);
             if(res.data) {
                 setList(res.data)
             } else {

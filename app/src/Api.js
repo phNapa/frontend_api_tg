@@ -206,6 +206,19 @@ export default {
         const json = await req.json();
         return json;
     },
+    getAlunoById: async (alunoID) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/aluno/${alunoID}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    },
     getProfAlunos: async (profID) =>{
         const token = await AsyncStorage.getItem('token');
         const req = await fetch(`${BASE_API}/aluno/prof/${profID}`,{
@@ -251,6 +264,32 @@ export default {
             })
             
         });
+        // const json = await req.json();
+        // return json;
+    },
+    putAceitarRequisicao: async (id) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/requisicao/aceitar/${id}`,{
+            method: 'PUT',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        // const json = await req.json();
+        // return json;
+    },
+    deleteRequisicao: async (id) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/requisicao/${id}`,{
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
         // const json = await req.json();
         // return json;
     },

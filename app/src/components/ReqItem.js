@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import CheckIcon from '../assets/check.svg';
 import ArrowRight from '../assets/arrowright.svg';
 import { useNavigation } from '@react-navigation/native';
+import AccountIcon from '../assets/account.svg';
 
 const Area = styled.View`
     border: 1px solid #FF8C78;
@@ -61,13 +62,21 @@ export default ({data}) => {
 
     const navigation = useNavigation();
     const handleClick = () => {
-        // navigation.navigate('AulaAluno', {
-        // });
+        navigation.navigate('VerReq', {
+            alunoID: data.alunoID,
+            name: data.name,
+            contato: data.contato,
+            cidade: data.cidade,
+            id: data.id,
+            requisicao: data.requisicao,
+            aceito: data.aceito
+        });
     };
 
     return (
         <Area>
           <ProfileAndStars>
+            <AccountIcon width="50" height="50" fill="#FFFFFF"/>
             <Aceito>
                 {data.aceito === 1 && (
                 <CheckIcon width="25" height="25" />
@@ -81,7 +90,9 @@ export default ({data}) => {
 
           <Area2>
             <InfoArea>
-              <NomeAluno>{data.alunoID}</NomeAluno>
+              <NomeAluno>{data.name}</NomeAluno>
+              <NomeAluno>{data.contato}</NomeAluno>
+              <NomeAluno>{data.cidade}</NomeAluno>
             </InfoArea>
           </Area2>
           <SeeReqButton onPress={handleClick}>

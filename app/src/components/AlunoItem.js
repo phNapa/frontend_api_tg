@@ -82,6 +82,7 @@ export default ({data}) => {
         <Area>
             <Area2>
                 <InfoArea>
+                    <UserName>{data.alunoID}</UserName>
                     <UserName>{data.name}</UserName>
                     <Contato>{data.contato}</Contato>
                     <Cidade>{data.cidade}</Cidade>
