@@ -161,6 +161,19 @@ export default {
         const json = await req.json();
         return json;
     },
+    getAulaID: async (aulaID) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/aula/${aulaID}`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    },
     createRequisicao: async(alunoID, professorID, requisicao) => {
         const token = await AsyncStorage.getItem('token');
         const req = await fetch(`${BASE_API}/requisicao`,{

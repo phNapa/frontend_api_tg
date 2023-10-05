@@ -4,6 +4,7 @@ import CheckIcon from '../assets/check.svg';
 import ArrowRight from '../assets/arrowright.svg';
 import Stars from '../components/Stars';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Area = styled.View`
     border: 1px solid #FF8C78;
@@ -61,17 +62,32 @@ const SeeAulaButton = styled.TouchableOpacity`
 export default ({data}) => {
 
     const navigation = useNavigation();
-    const handleClick = () => {
-        navigation.navigate('AulaAluno', {
-            aulaID: data.aulaID,
-            treinoID: data.treinoID,
-            titulo: data.titulo,
-            dataAula: data.dataAula,
-            horario: data.horario,
-            localo: data.localo,
-            duracao: data.duracao,
-            finalizado: data.finalizado,
-        });
+    const handleClick = async () => {
+        const isProfessor = await AsyncStorage.getItem('isProfessor');
+        if (isProfessor == 0){
+            navigation.navigate('AulaAluno', {
+                aulaID: data.aulaID,
+                treinoID: data.treinoID,
+                titulo: data.titulo,
+                dataAula: data.dataAula,
+                horario: data.horario,
+                localo: data.localo,
+                duracao: data.duracao,
+                finalizado: data.finalizado,
+            });
+        } else {
+            navigation.navigate('AulaDetalhes',{
+                aulaID: data.aulaID,
+                treinoID: data.treinoID,
+                titulo: data.titulo,
+                dataAula: data.dataAula,
+                horario: data.horario,
+                localo: data.localo,
+                duracao: data.duracao,
+                finalizado: data.finalizado,
+            });
+        }
+        
     };
 
     return (
