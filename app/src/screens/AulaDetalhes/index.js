@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, TextInput, FlatList } from 'react-native';
+import { FlatList, View, Text, Modal, TouchableOpacity } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import Api from '../../Api';
-import { Container, HeaderTitle, Texts, ExericioArea, Nota} from './styles';
+import { Container, HeaderTitle, Texts, ExericioArea, Nota, Buttons, ButtonTitle} from './styles';
 import Stars from '../../components/Stars';
 
 const ExerciseScreen = () => {
+  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
+
   const navigation = useNavigation();
   const route = useRoute();
   const { aulaID, treinoID, titulo, dataAula, horario, localo, duracao, finalizado} = route.params;
@@ -48,6 +50,24 @@ const ExerciseScreen = () => {
     } 
   };
 
+  const handleShowConfirmation = () => {
+    setIsConfirmationVisible(true);
+  };
+  
+
+  const handleDeleteAula = async () => {
+    if(aulaID) {
+      console.log(aulaID)
+        let res = await Api.deleteAula(aulaID);
+        setIsConfirmationVisible(false);
+        alert("Aula apagada com Sucesso!")
+              navigation.reset({
+                routes:[{name:'MeusAlunosProf'}]
+        });
+        
+    } 
+  };
+
 
   return (
     <Container>
@@ -57,7 +77,7 @@ const ExerciseScreen = () => {
         <Nota>
         <HeaderTitle>{lessonName}</HeaderTitle>
         <Stars stars={notaAula} />
-        <Texts>Nota da aula: {notaAula}</Texts>
+        <Texts>Nota: {notaAula}</Texts>
         
         </Nota>
         
@@ -77,6 +97,26 @@ const ExerciseScreen = () => {
             renderItem={({ item }) => <Texts>{item}</Texts>}
           />
         </ExericioArea>
+        <Buttons onPress={handleShowConfirmation}>
+          <ButtonTitle>Excluir Aula</ButtonTitle>
+        </Buttons>
+        <Modal
+          visible={isConfirmationVisible}
+          transparent={true}
+          animationType="slide"
+        >
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10 }}>
+              <Texts>Deseja realmente excluir esta aula?</Texts>
+              <Buttons onPress={handleDeleteAula}>
+                <ButtonTitle>Sim</ButtonTitle>
+              </Buttons>
+              <Buttons onPress={() => setIsConfirmationVisible(false)}>
+                <ButtonTitle>Não</ButtonTitle>
+              </Buttons>
+            </View>
+          </View>
+        </Modal>
     </Container>
   );
 };

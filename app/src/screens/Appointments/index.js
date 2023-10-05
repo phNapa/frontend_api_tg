@@ -15,11 +15,12 @@ export default () => {
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
     const getAulaUser = async () => {
-        const userID = await AsyncStorage.getItem('userID');
+        const alunoID = await AsyncStorage.getItem('alunoID');
+        console.log(alunoID)
         setLoading(true);
         setList([]);
-        if(userID) {
-            let res = await Api.getAulaUser(userID);
+        if(alunoID) {
+            let res = await Api.getAulaUser(alunoID);
             if(res.data) {
                 setList(res.data)
             } else {

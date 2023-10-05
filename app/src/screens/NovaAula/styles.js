@@ -32,13 +32,11 @@ export const Middle = styled.View`
 export const Buttons = styled.TouchableOpacity`
   flex-direction: row;
   background-color: #FF8C78;
-  width: 30%;
   height: 5%;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
   margin: 5px;
-  margin-left:35%;
 `;
 
 export const ButtonTitle = styled.Text`
@@ -52,31 +50,55 @@ export const Texts = styled.Text`
     font-weight: bold;
     color: #FF8C78;
     padding-left: 20px;
+    margin: 3px;
 `;
+
+export const InputArea = styled.View`
+    flex-direction: row;
+    align-items: space-between;
+`;
+
+export const ModalArea = styled.View`
+    justify-content: space-between;
+    background-color: #FFEFEC;
+    border-radius: 10px;
+`;
+
 export const TextsInputMenor = styled.TextInput`
     font-size: 16px;
     color: #FF8C78;
-    border: 2px solid #FF8C78;
-    border-radius: 10px;
+    border-bottom-width: 2px;
+    border-color: #FF8C78;
     margin-left: 10px;
-    margin-right: 25%;
-    width: 40%;
+    width: 30%;
+    padding-bottom: -2px;
 `;
 
 export const TextsInputMaior = styled.TextInput`
     font-size: 16px;
     color: #FF8C78;
-    border: 2px solid #FF8C78;
-    border-radius: 10px;
+    border-bottom-width: 2px;
+    border-color: #FF8C78;
     margin-left: 10px;
     width: 95%;
+    padding-bottom: -2px;
 `;
 
-export const InputArea = styled.View`
-    flex-direction: row;
-    align-items: center;
-    margin-top: 10px;
-    justify-content: space-between;
+
+export const ExercicioArea = styled.View`
+    margin: 10px;
+    border: 3px solid #FF8C78;
+    border-radius: 10px;
+    padding: 10px;
+    height: 25%;
+`;
+
+export const ExercicioArea2 = styled.View`
+    margin: 10px;
+    border: 3px solid #FF8C78;
+    border-radius: 10px;
+    padding: 10px;
+    height: 60%;
 `;
 
 export const NameTitle = styled.Text`

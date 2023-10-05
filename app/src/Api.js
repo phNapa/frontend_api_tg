@@ -306,4 +306,87 @@ export default {
         // const json = await req.json();
         // return json;
     },
+    getExerciciosList: async () => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/exercicio`,{
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        const json = await req.json();
+        return json;
+    },
+    postNovoExercicio: async(newExercicio) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/exercicio`,{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({
+                "nome": `${newExercicio}`
+            })
+            
+        });
+        const json = await req.json();
+        return json;
+    },
+    postNovoTreino: async(exercicios, series, repetitions, rest) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/treino`,{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({
+                "exercicios": `${exercicios}`,
+                "series": `${series}`,
+                "repeticoes": `${repetitions}`,
+                "descanso": `${rest}`
+            })
+        });
+        const json = await req.json();
+        return json;
+    },
+    postNovaAula: async(treinoID, exerciseName, alunoID, professorID) => {
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/aula`,{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({
+                "treinoID": `${treinoID}`,
+                "titulo": `${exerciseName}`,
+                "alunoID": `${alunoID}`,
+                "professorID": `${professorID}`,
+                "finalizado": "0"
+            })
+            
+        });
+        const json = await req.json();
+        return json;
+    },
+    deleteAula: async (id) =>{
+        const token = await AsyncStorage.getItem('token');
+        const req = await fetch(`${BASE_API}/aula/${id}`,{
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        })
+        // const json = await req.json();
+        // return json;
+    },
 };

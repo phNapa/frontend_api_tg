@@ -132,7 +132,7 @@ const ExerciseScreen = () => {
           />
         </ExericioArea>
         
-        <Modal color="#FFEFEC" width="90%" isVisible={isModalVisible}>
+        <Modal animationType={'fade'} color="#FFEFEC" width="90%" isVisible={isModalVisible}>
           <ModalArea>
             <HeaderTitle>Finalizar aula</HeaderTitle>
             <Texts>Tempo total: {formatTime(totalSeconds)}</Texts>

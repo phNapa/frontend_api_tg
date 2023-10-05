@@ -32,3 +32,18 @@ export const ExericioArea = styled.View`
     border-radius: 10px;
     padding: 10px;
 `;
+
+export const Buttons = styled.TouchableOpacity`
+  flex-direction: row;
+  background-color: #FF8C78;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 5px;
+`;
+
+export const ButtonTitle = styled.Text`
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+`;
