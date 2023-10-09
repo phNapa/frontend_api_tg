@@ -71,7 +71,7 @@ export default ({data}) => {
                 titulo: data.titulo,
                 dataAula: data.dataAula,
                 horario: data.horario,
-                localo: data.localo,
+                local: data.local,
                 duracao: data.duracao,
                 finalizado: data.finalizado,
             });
@@ -82,7 +82,7 @@ export default ({data}) => {
                 titulo: data.titulo,
                 dataAula: data.dataAula,
                 horario: data.horario,
-                localo: data.localo,
+                local: data.local,
                 duracao: data.duracao,
                 finalizado: data.finalizado,
             });

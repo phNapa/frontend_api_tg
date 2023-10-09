@@ -9,7 +9,7 @@ const ExerciseScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const [isModalVisible, setModalVisible] = useState(false);
-  const { aulaID, treinoID, titulo, dataAula, horario, localo, duracao, finalizado} = route.params;
+  const { aulaID, treinoID, titulo, dataAula, horario, local, duracao, finalizado} = route.params;
   const [lessonName, setLessonName] = useState('');
   const [totalSeconds, setTotalSeconds] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);

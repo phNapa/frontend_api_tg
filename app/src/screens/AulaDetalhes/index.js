@@ -10,7 +10,7 @@ const ExerciseScreen = () => {
 
   const navigation = useNavigation();
   const route = useRoute();
-  const { aulaID, treinoID, titulo, dataAula, horario, localo, duracao, finalizado} = route.params;
+  const { aulaID, treinoID, titulo, dataAula, horario, local, duracao, finalizado} = route.params;
   const [lessonName, setLessonName] = useState('');
   const [series, setSeries] = useState('');
   const [repetitions, setRepetitions] = useState('');
@@ -83,7 +83,7 @@ const ExerciseScreen = () => {
         
         <Texts>Data aula: {dataAula}</Texts>
         <Texts>Horario: {horario}</Texts>
-        <Texts>Local: {localo}</Texts>
+        <Texts>Local: {local}</Texts>
         <Texts>Duracao: {duracao}</Texts>
         <Texts>Séries: {series}</Texts>
         <Texts>Repetições: {repetitions}</Texts>
