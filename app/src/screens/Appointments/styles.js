@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
-    background-color: #FFEFEC;
+    background-color: #F9F9F9;
 `;
 
 export const Scroller = styled.ScrollView`
@@ -22,7 +22,7 @@ export const HeaderTitle = styled.Text`
     width: 250px;
     font-size: 24px;
     font-weight: bold;
-    color: #FF8C78;
+    color: #007BFF;
 `;
 
 export const SearchButton = styled.TouchableOpacity`
@@ -31,7 +31,7 @@ export const SearchButton = styled.TouchableOpacity`
 `;
 
 export const LocationArea = styled.View`
-    background-color: #FFD6CF;
+    background-color: #D1E5FF;
     height: 60px;
     border-radius: 30px;
     flex-direction: row;
@@ -44,7 +44,7 @@ export const LocationArea = styled.View`
 export const LocationInput = styled.TextInput`
     flex: 1;
     font-size: 16px;
-    color: #FF8C78;
+    color: #007BFF;
 `;
 
 export const LocationFinder = styled.TouchableOpacity`

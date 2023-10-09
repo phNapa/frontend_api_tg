@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
-    background-color: #FFEFEC;
+    background-color: #F9F9F9;
 `;
 
 export const HeaderArea = styled.View`
@@ -18,7 +18,7 @@ export const HeaderTitle = styled.Text`
     width: 250px;
     font-size: 24px;
     font-weight: bold;
-    color: #FF8C78;
+    color: #007BFF;
 `;
 
 export const Middle = styled.View`
@@ -31,7 +31,7 @@ export const Middle = styled.View`
 
 export const Buttons = styled.TouchableOpacity`
   flex-direction: row;
-  background-color: #FF8C78;
+  background-color: #007BFF;
   width: 30%;
   height: 5%;
   align-items: center;
@@ -50,19 +50,19 @@ export const ButtonTitle = styled.Text`
 export const Texts = styled.Text`
     font-size: 18px;
     font-weight: bold;
-    color: #FF8C78;
+    color: #007BFF;
     padding-left: 20px;
 `;
 
 export const NameTitle = styled.Text`
     font-size: 27px;
     font-weight: bold;
-    color: #FF8C78;
+    color: #007BFF;
 `;
 
 export const ReqArea = styled.View`
     margin: 10px;
-    border: 2px solid #FF8C78;
+    border: 2px solid #007BFF;
     border-radius: 10px;
     padding: 10px;
 `;

@@ -132,7 +132,7 @@ const ExerciseScreen = () => {
           />
         </ExericioArea>
         
-        <Modal animationType={'fade'} color="#FFEFEC" width="90%" isVisible={isModalVisible}>
+        <Modal animationType={'fade'} color="#F9F9F9" width="90%" isVisible={isModalVisible}>
           <ModalArea>
             <HeaderTitle>Finalizar aula</HeaderTitle>
             <Texts>Tempo total: {formatTime(totalSeconds)}</Texts>
@@ -164,11 +164,11 @@ const ExerciseScreen = () => {
               onChangeText={(text) => setTextoDificuldades(text)}
               multiline={true}
             />
-            <ButtonsModal color="#FF8C78" onPress={finishTraining}>
+            <ButtonsModal color="#007BFF" onPress={finishTraining}>
               <ButtonTitle>Finalizar e Enviar</ButtonTitle>
             </ButtonsModal>
 
-            <ButtonsModal color="#FF8C78" onPress={() => setModalVisible(false)}>
+            <ButtonsModal color="#007BFF" onPress={() => setModalVisible(false)}>
               <ButtonTitle>Cancelar</ButtonTitle>
             </ButtonsModal>
           </ModalArea>

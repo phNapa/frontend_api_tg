@@ -52,8 +52,8 @@ const CreateAlunoScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Ex. CREF"
-            placeholderTextColor="#FF8C78"
-            backgroundColor="#FFD6CF"
+            placeholderTextColor="#007BFF"
+            backgroundColor="#D1E5FF"
             onChangeText={(text) => setCertificacoes(text)}
           />
         </View>
@@ -76,8 +76,8 @@ const CreateAlunoScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Ex. Fraturas"
-            placeholderTextColor="#FF8C78"
-            backgroundColor="#FFD6CF"
+            placeholderTextColor="#007BFF"
+            backgroundColor="#D1E5FF"
             onChangeText={(text) => setEspecialidade(text)}
           />
         </View>
@@ -87,12 +87,12 @@ const CreateAlunoScreen = () => {
         <TextInput
           style={styles.input}
           placeholder="Ex. 5 anos"
-          placeholderTextColor="#FF8C78"
-          backgroundColor="#FFD6CF"
+          placeholderTextColor="#007BFF"
+          backgroundColor="#D1E5FF"
           onChangeText={(text) => setExperiencia(text)}
         />
         {showError && <Text style={{ color: 'red' }}>{error}</Text>}
-        <Button title="Finalizar" onPress={handleSignClick} color="#FF8C78" />
+        <Button title="Finalizar" onPress={handleSignClick} color="#007BFF" />
         </View>
       </View>
     </ScrollView>
@@ -101,25 +101,25 @@ const CreateAlunoScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFEFEC',
+    backgroundColor: '#F9F9F9',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   picker: {
-    backgroundColor: '#FFD6CF',
-    color: '#FF8C78',
+    backgroundColor: '#D1E5FF',
+    color: '#007BFF',
     
   },
   input: {
-    color: '#FF8C78',
+    color: '#007BFF',
     fontSize: 15,
     width: '100%',
     marginVertical: 5,
     padding: 10,
   },
   text: {
-    color: '#FF8C78', fontSize: 18
+    color: '#007BFF', fontSize: 18
   }
 });
 

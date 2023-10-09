@@ -66,7 +66,7 @@ export default () => {
                     </Picker>
                 </LocationArea>
                 {loading&&
-                <LoadingIcon size="large" color="#FF8C78"/>
+                <LoadingIcon size="large" color="#007BFF"/>
                 }
                 <ListArea>
                     {listaFiltrada.length === 0 ? (
@@ -86,10 +86,10 @@ export default () => {
 const styles = StyleSheet.create({
     picker: {
       width: '90%',
-      backgroundColor: '#FFD6CF',
-      color: '#FF8C78',
+      backgroundColor: '#D1E5FF',
+      color: '#007BFF',
     },
     text: {
-      color: '#FF8C78', fontSize: 18
+      color: '#007BFF', fontSize: 18
     }
 });

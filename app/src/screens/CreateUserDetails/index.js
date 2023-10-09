@@ -130,12 +130,12 @@ const CreateUserScreen = () => {
         <Text style={styles.text}>Detalhes do usuário</Text>
 
         <View width="80%">
-        <Text style={{ color: '#FF8C78', fontSize: 15}}>Nome</Text>
+        <Text style={{ color: '#007BFF', fontSize: 15}}>Nome</Text>
           <TextInput
           style={styles.input}
           placeholder="Insira seu nome"
-          placeholderTextColor="#FF8C78"
-          backgroundColor="#FFD6CF"
+          placeholderTextColor="#007BFF"
+          backgroundColor="#D1E5FF"
           onChangeText={(text) => setNome(text)}
           />
         </View>
@@ -145,8 +145,8 @@ const CreateUserScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Insira o CPF"
-            placeholderTextColor="#FF8C78"
-            backgroundColor="#FFD6CF"
+            placeholderTextColor="#007BFF"
+            backgroundColor="#D1E5FF"
             onChangeText={(text) => setCPF(text)}
             keyboardType="numeric"
           />
@@ -171,8 +171,8 @@ const CreateUserScreen = () => {
                 style={styles.input}
                 width='100%'
                 placeholder="Selecionar"
-                placeholderTextColor="#FF8C78"
-                backgroundColor="#FFD6CF"
+                placeholderTextColor="#007BFF"
+                backgroundColor="#D1E5FF"
                 value={dataNasc}
                 onChangeText={setDataNasc}
                 editable={false}
@@ -200,8 +200,8 @@ const CreateUserScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Insira seu contato"
-            placeholderTextColor="#FF8C78"
-            backgroundColor="#FFD6CF"
+            placeholderTextColor="#007BFF"
+            backgroundColor="#D1E5FF"
             onChangeText={(text) => setContato(text)}
             keyboardType="numeric"
           />
@@ -213,8 +213,8 @@ const CreateUserScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Insira seu endereço"
-            placeholderTextColor="#FF8C78"
-            backgroundColor="#FFD6CF"
+            placeholderTextColor="#007BFF"
+            backgroundColor="#D1E5FF"
             onChangeText={(text) => setEndereco(text)}
           />
         </View>
@@ -235,7 +235,7 @@ const CreateUserScreen = () => {
         <Button title="Próximo" onPress={() => {
             if (validarCPF()) {
                 handleSignClick(); 
-            }}} color="#FF8C78" />
+            }}} color="#007BFF" />
       </View>
     </ScrollView>
   );
@@ -243,24 +243,24 @@ const CreateUserScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFEFEC',
+    backgroundColor: '#F9F9F9',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   picker: {
-    backgroundColor: '#FFD6CF',
-    color: '#FF8C78',
+    backgroundColor: '#D1E5FF',
+    color: '#007BFF',
   },
   input: {
-    color: '#FF8C78',
+    color: '#007BFF',
     fontSize: 15,
     width: '100%',
     marginVertical: 5,
     padding: 10,
   },
   text: {
-    color: '#FF8C78', fontSize: 18
+    color: '#007BFF', fontSize: 18
   }
 });
 

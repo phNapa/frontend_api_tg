@@ -94,7 +94,7 @@ export default () => {
             </Buttons>
             <Texts>Treinos anteriores:</Texts>
             {loading&&
-                  <LoadingIcon size="large" color="#FF8C78"/>
+                  <LoadingIcon size="large" color="#007BFF"/>
                   }
 
                   <ListArea>

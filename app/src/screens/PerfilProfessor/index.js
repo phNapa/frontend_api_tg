@@ -32,9 +32,9 @@ export default () => {
     return (
         <Container>
             <Text>Perfil Professor</Text>
-            <Button color="#FF8C78" title="Requisição" onPress={() => setModalVisible(true)} />
+            <Button color="#007BFF" title="Requisição" onPress={() => setModalVisible(true)} />
 
-            <Modal color="#FFEFEC" width="90%" isVisible={isModalVisible}>
+            <Modal color="#F9F9F9" width="90%" isVisible={isModalVisible}>
                 <Area>
                     <HeaderTitle>Descreva a sua necessidade:</HeaderTitle>
                     <Area2>
@@ -45,9 +45,9 @@ export default () => {
                         />
                     </Area2>
                     
-                    <Button color="#FF8C78" title="Finalizar e Enviar" onPress={handleRequisição} />
+                    <Button color="#007BFF" title="Finalizar e Enviar" onPress={handleRequisição} />
                     {showError && <Text style={{ color: 'red' }}>{error}</Text>}
-                    <Button color="#FF8C78" title="Cancelar" onPress={() => setModalVisible(false)} />
+                    <Button color="#007BFF" title="Cancelar" onPress={() => setModalVisible(false)} />
                     <Text/>
                 </Area>
             </Modal>

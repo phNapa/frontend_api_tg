@@ -123,9 +123,10 @@ export default () => {
             
             <Texts>Objetivo: {objetivoAluno}</Texts>
             <Texts>Peso: {pesoAluno} Kg         Altura: {alturaAluno}         IMC: {imcAluno}</Texts>
-            <Texts>Nome do treino</Texts>
+            
             <InputArea>
-              <TextsInputMaior
+            <Texts>Aula:</Texts>
+              <TextsInputMenor
                 value={exerciseName}
                 onChangeText={(text) => setExerciseName(text)}
               />
@@ -171,7 +172,7 @@ export default () => {
             <Buttons onPress={() => setModalVisible(true)}>
               <ButtonTitle>Selecionar Exercícios</ButtonTitle>
             </Buttons>
-            <Modal color="#FFEFEC" visible={modalVisible}>
+            <Modal color="#F9F9F9" visible={modalVisible}>
               <ModalArea>
                 <HeaderArea>
                   <HeaderTitle>Selecione os exercicios</HeaderTitle>

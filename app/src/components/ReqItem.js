@@ -6,8 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import AccountIcon from '../assets/account.svg';
 
 const Area = styled.View`
-    border: 1px solid #FF8C78;
-    background-color: #FFD6CF;
+    border: 1px solid #007BFF;
+    background-color: #D1E5FF;
     margin-bottom: 20px;
     border-radius: 10px;
     padding: 15px;
@@ -50,8 +50,8 @@ const Text = styled.Text`
 const SeeReqButton = styled.TouchableOpacity`
     width: 40px;
     height: 40px;
-    background-color: #FF8C78;
-    border: 1px solid #FF8C78;
+    background-color: #007BFF;
+    border: 1px solid #007BFF;
     border-radius: 5px;
     justify-content: center;
     align-items: center;

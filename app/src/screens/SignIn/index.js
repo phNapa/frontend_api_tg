@@ -77,7 +77,7 @@ export default () => {
                 fontSize: 50,       
                 fontWeight: 'bold', 
                 textAlign: 'center',
-                color: '#FF8C78',       
+                color: '#007BFF',       
                 marginBottom: 20,   
             }}>FiTogether</CustomButtonText>
                 <SignInput 

@@ -51,7 +51,7 @@ export default () => {
 
             
                 {loading&&
-                <LoadingIcon size="large" color="#FF8C78"/>
+                <LoadingIcon size="large" color="#007BFF"/>
                 }
 
                 <ListArea>
@@ -71,6 +71,6 @@ export default () => {
 
 const styles = StyleSheet.create({
     text: {
-      color: '#FF8C78', fontSize: 20
+      color: '#007BFF', fontSize: 20
     }
   });

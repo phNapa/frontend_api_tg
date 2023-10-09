@@ -4,20 +4,20 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
-    background-color: #FFEFEC;
+    background-color: #F9F9F9;
 `;
 
 export const HeaderTitle = styled.Text`
     width: 250px;
     font-size: 24px;
     font-weight: bold;
-    color: #FF8C78;
+    color: #007BFF;
     padding-left: 20px;
     padding-top: 10px;
 `;
 
 export const Buttons = styled.TouchableOpacity`
-  background-color: ${(props) => (props.disabled ? '#ccc' : '#FF8C78')};
+  background-color: ${(props) => (props.disabled ? '#ccc' : '#007BFF')};
   width: 150%;
   height: 20%;
   align-items: center;
@@ -27,7 +27,7 @@ export const Buttons = styled.TouchableOpacity`
 `;
 
 export const ButtonsModal = styled.TouchableOpacity`
-  background-color: ${(props) => (props.disabled ? '#ccc' : '#FF8C78')};
+  background-color: ${(props) => (props.disabled ? '#ccc' : '#007BFF')};
   width: 50%;
   height: 5%;
   align-items: center;
@@ -46,7 +46,7 @@ export const ButtonTitle = styled.Text`
 export const Texts = styled.Text`
     font-size: 18px;
     font-weight: bold;
-    color: #FF8C78;
+    color: #007BFF;
     padding-left: 20px;
 `;
 
@@ -61,13 +61,13 @@ export const Area1 = styled.View`
 `;
 
 export const Area2 = styled.View`
-    background-color: #FFEFEC;
+    background-color: #F9F9F9;
     align-items: center;
 `;
 
 export const ExericioArea = styled.View`
     margin: 10px;
-    border: 3px solid #FF8C78;
+    border: 3px solid #007BFF;
     border-radius: 10px;
     padding: 10px;
 `;
@@ -79,37 +79,37 @@ export const Cronometro = styled.View`
     border-radius: 90px;
     justify-content: center;
     align-items: center;
-    border: 3px solid #FF8C78;
+    border: 3px solid #007BFF;
 `;
 
 export const CronometroText = styled.Text`
     font-size: 24px;
     font-weight: bold;
-    color: #FF8C78;
+    color: #007BFF;
 `;
 
 export const ModalArea = styled.View`
     justify-content: space-between;
-    background-color: #FFEFEC;
+    background-color: #F9F9F9;
     border-radius: 10px;
 `;
 
 export const ReqInput = styled.TextInput`
-    border: 3px solid #FF8C78;
+    border: 3px solid #007BFF;
     border-radius: 10px;
     height: 20%;
     font-size: 16px;
-    color: #FF8C78;
+    color: #007BFF;
     padding: 10px;
     margin: 15px;
 `;
 
 export const NotasInput = styled.TextInput`
-    border: 3px solid #FF8C78;
+    border: 3px solid #007BFF;
     border-radius: 10px;
     height: 7%;
     font-size: 16px;
-    color: #FF8C78;
+    color: #007BFF;
     padding: 10px;
     margin: 15px;
 `;

@@ -5,7 +5,7 @@ import CustomTabBar from '../components/CustomTabBar';
 
 import Home from '../screens/Home';
 import Appointments from '../screens/Appointments';
-import Profile from '../screens/Profile';
+import MeuPerfilProfessor from '../screens/MeuPerfilProfessor';
 import PerfilProfessor from '../screens/PerfilProfessor';
 import AulaAluno from '../screens/AulaAluno';
 import ReqsProf from '../screens/ReqsProf';
@@ -14,6 +14,7 @@ import VerReq from "../screens/VerReq";
 import MeuAluno from '../screens/MeuAluno';
 import NovaAula from '../screens/NovaAula';
 import AulaDetalhes from '../screens/AulaDetalhes';
+import MeuPerfilAluno from '../screens/MeuPerfilAluno';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +27,8 @@ export default () => {
     >
         <Tab.Screen name="Appointments" component={Appointments} />
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="MeuPerfilProfessor" component={MeuPerfilProfessor} />
+        <Tab.Screen name="MeuPerfilAluno" component={MeuPerfilAluno} />
         <Tab.Screen name="PerfilProfessor" component={PerfilProfessor} />
         <Tab.Screen name="AulaAluno" component={AulaAluno} />
         <Tab.Screen name="ReqsProf" component={ReqsProf} />

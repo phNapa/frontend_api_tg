@@ -17,7 +17,7 @@ export default () => {
 
     return(
         <Container>
-                <Text>Profile</Text>
+                <Text>Meu Perfil Professor</Text>
                 <Button title="Sair" onPress={handleLogoutClick}/>
         </Container>
     );

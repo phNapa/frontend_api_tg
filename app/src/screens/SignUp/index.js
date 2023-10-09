@@ -134,14 +134,14 @@ export default () => {
             height: 30,
             borderWidth: 1,
             borderRadius:5,
-            borderColor: '#FF8C78',
+            borderColor: '#007BFF',
             marginTop: 10,
             marginRight: 10,
             marginBottom: 25,
-            backgroundColor: isProfessor ? '#FF8C78' : '#FFEFEC',
+            backgroundColor: isProfessor ? '#007BFF' : '#F9F9F9',
         },
         professorToggleText:{
-            color: '#FF8C78',
+            color: '#007BFF',
             marginBottom: 25,
             fontSize: 18,
             marginTop: 10
@@ -156,7 +156,7 @@ export default () => {
                     fontSize: 30,       
                     fontWeight: 'bold', 
                     textAlign: 'center',
-                    color: '#FF8C78',       
+                    color: '#007BFF',       
                     marginBottom: 20,   
                 }}>Criação de conta</CustomButtonText>
 
@@ -190,7 +190,7 @@ export default () => {
                     password={true}
                 />
 
-                <Text style={{ color: '#FF8C78', fontSize: 18}}>Você é professor?</Text>
+                <Text style={{ color: '#007BFF', fontSize: 18}}>Você é professor?</Text>
                     <TouchableOpacity onPress={toggleProfessor}>
                         <View style={{
                             flexDirection: 'row', 
