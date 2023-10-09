@@ -16,6 +16,7 @@ import VerReq from "../screens/VerReq";
 import MeuAluno from "../screens/MeuAluno";
 import NovaAula from "../screens/NovaAula";
 import AulaDetalhes from "../screens/AulaDetalhes";
+import Acompanhamento from "../screens/Acompanhamento";
 
 const Stack = createStackNavigator();
 
@@ -40,6 +41,7 @@ export default () => {
         <Stack.Screen name="MeuAluno" component={MeuAluno} />
         <Stack.Screen name="NovaAula" component={NovaAula} />
         <Stack.Screen name="AulaDetalhes" component={AulaDetalhes} />
+        <Stack.Screen name="Acompanhamento" component={Acompanhamento} />
     </Stack.Navigator>
   );
 };

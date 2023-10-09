@@ -15,10 +15,15 @@ export default () => {
         });
     }
 
+    const handleAcompanhamentoClick = async () => {
+        navigation.navigate('Acompanhamento', {});
+    }
+
     return(
         <Container>
                 <Text>Meu Perfil Professor</Text>
                 <Button title="Sair" onPress={handleLogoutClick}/>
+                <Button title="Acompanhamento" onPress={handleAcompanhamentoClick}/>
         </Container>
     );
 };

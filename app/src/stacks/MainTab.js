@@ -15,6 +15,7 @@ import MeuAluno from '../screens/MeuAluno';
 import NovaAula from '../screens/NovaAula';
 import AulaDetalhes from '../screens/AulaDetalhes';
 import MeuPerfilAluno from '../screens/MeuPerfilAluno';
+import Acompanhamento from '../screens/Acompanhamento';
 
 
 const Tab = createBottomTabNavigator();
@@ -37,6 +38,7 @@ export default () => {
         <Tab.Screen name="MeuAluno" component={MeuAluno} />
         <Tab.Screen name="NovaAula" component={NovaAula} />
         <Tab.Screen name="AulaDetalhes" component={AulaDetalhes} />
+        <Tab.Screen name="Acompanhamento" component={Acompanhamento} />
     </Tab.Navigator>
     );
 };
