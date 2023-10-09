@@ -1,4 +1,4 @@
-const BASE_API = 'http://192.168.0.14:3333';
+const BASE_API = 'https://backendapitg-production-0590.up.railway.app';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default {
@@ -14,7 +14,7 @@ export default {
                 "senha": `${password}`
             }),
             });
-          
+          console.log(req)
             const json = await req.json();
             return json;
     },

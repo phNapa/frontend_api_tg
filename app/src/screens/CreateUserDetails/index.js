@@ -113,6 +113,7 @@ const CreateUserScreen = () => {
           }
           
       } else {
+         console.log(res.error)
           setError("Algo deu errado!");
           setShowError(true);
       }
