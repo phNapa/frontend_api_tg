@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, Button, View, TextInput, StyleSheet } from 'react-native';
-import { Container, Area, Area2, HeaderTitle, ReqInput } from './styles';
+import { Text, Button, Linking, TouchableOpacity } from 'react-native';
+import { Container, Area, Area2, HeaderTitle, ReqInput, Middle } from './styles';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import WhatsAppIcon from '../../assets/whatsapp-svg';
 import { useRoute } from '@react-navigation/native';
 import Api from '../../Api';
 import Modal from 'react-native-modal';
@@ -29,9 +30,30 @@ export default () => {
         setModalVisible(false);
     }
 
+    const handleWhatsAppClick = async () => {
+        if (contato.length != 11) {
+            alert('Número invalido');
+        return;
+      }
+      let url =
+        'whatsapp://send?text=' + "oi" + '&phone=55' + contato;
+      Linking.openURL(url)
+        .then((data) => {
+          console.log('WhatsApp Opened');
+        })
+        .catch(() => {
+          alert('WhatsApp não está instalado!');
+        });
+    }
+
     return (
         <Container>
             <Text>Perfil Professor</Text>
+            <TouchableOpacity onPress={handleWhatsAppClick} >
+                    <Middle>
+                        <WhatsAppIcon width="30" height="30"/>
+                    </Middle>
+            </TouchableOpacity>
             <Button color="#007BFF" title="Requisição" onPress={() => setModalVisible(true)} />
 
             <Modal color="#F9F9F9" width="90%" isVisible={isModalVisible}>

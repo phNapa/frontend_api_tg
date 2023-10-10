@@ -43,3 +43,10 @@ export const ReqInput = styled.TextInput`
     font-size: 16px;
     color: #007BFF;
 `;
+
+export const Middle = styled.View`
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+`;
