@@ -3,8 +3,7 @@ import { Text, RefreshControl } from 'react-native';
 import { Container, HeaderArea, HeaderTitle, Texts, Middle, NameTitle, Scroller, ListArea, LoadingIcon, Buttons, ButtonTitle } from './styles';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import AccountIcon from '../../assets/account.svg';
-import AulaItem from '../../components/AulaItem'
-import CheckIcon from '../../assets/check.svg';
+import AulaItem from '../../components/AulaItem';
 
 import Api from '../../Api';
 
