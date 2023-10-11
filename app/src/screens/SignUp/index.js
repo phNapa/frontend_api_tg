@@ -198,7 +198,7 @@ export default () => {
                         <View
                             style={styles.professorToggle}
                         />
-                        <Text style={styles.professorToggleText}>{isProfessor ? 'Sim' : 'Não'}</Text>
+                        <Text style={styles.professorToggleText}>{isProfessor ? 'Sim' : 'Sim'}</Text>
                         </View>
                     </TouchableOpacity>
 

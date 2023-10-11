@@ -8,6 +8,7 @@ import ProfessorItem from '../../components/ProfessorItem'
 import Api from '../../Api';
 import {Picker} from '@react-native-picker/picker';
 import cidadesBrasil from '../CreateUserDetails/cidadesBrasil';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default () => {
 
@@ -16,30 +17,23 @@ export default () => {
     const [loading, setLoading] = useState(false);
     const [list, setList] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
-    const [cidade, setCidade] = useState('');
+    const [cidadeSelecionada, setCidadeSelecionada] = useState('');
 
+    const listaFiltrada = list.filter((item) => {
+        if (cidadeSelecionada === '') {
+          return true;
+        }
+        return item.cidade === cidadeSelecionada;
+    });
 
     const getProfessores = async () => {
+        const professorID = await AsyncStorage.getItem('professorID');
         setLoading(true);
         setList([]);
-        if(cidade) {
-            let res = await Api.getProfessoresCidade(cidade);
-            if(res.data) {
-                setList(res.data)
-            } else {
-                // Alert("Erro: "+ res.error);
-            }
-        } 
-        else {
-            let res = await Api.getProfessores();
-            if(res.data) {
-                setList(res.data)
-            } else {
-                // Alert("Erro: "+ res.error);
-            }
+        let res = await Api.getProfessores(professorID);
+        if(res.data) {
+            setList(res.data)
         }
-        
-
         setLoading(false);
     };
 
@@ -64,27 +58,29 @@ export default () => {
 
                 <LocationArea>
                     <Picker
+                        selectedValue={cidadeSelecionada}
+                        onValueChange={(itemValue, itemIndex) => {
+                            setCidadeSelecionada(itemValue);
+                        }}
                         style={styles.picker}
-                        selectedValue={cidade}
-                        onValueChange={(itemValue, itemIndex) => setCidade(itemValue)}
-                    >
-                        <Picker.Item label="Selecione uma cidade" value="" />
+                        >
+                        <Picker.Item label="Filtrar por cidade" value="" />
                         {cidadesBrasil.map((cidade, index) => (
                         <Picker.Item key={index} label={cidade} value={cidade} />
                         ))}
                     </Picker>
-                    <LocationFinder onPress={getProfessores}>
-                        <MyLocationIcon width="30" height="30" fill="#007BFF"/>
-                    </LocationFinder>
                 </LocationArea>
                 {loading&&
                 <LoadingIcon size="large" color="#007BFF"/>
                 }
-
                 <ListArea>
-                    {list.map((item, k)=>(
-                        <ProfessorItem key={k} data={item}/>
-                    ))}
+                    {listaFiltrada.length === 0 ? (
+                        <Text style={styles.text}>Nenhum aluno encontrado!</Text>
+                    ) : (
+                        listaFiltrada.map((item, k) => (
+                            <ProfessorItem key={k} data={item}/>
+                        ))
+                    )}
                 </ListArea>
             </Scroller>
         </Container>

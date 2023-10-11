@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Text, Button, TouchableOpacity  } from 'react-native';
+import { Text, Button, TouchableOpacity, RefreshControl  } from 'react-native';
 import { Container, HeaderArea, HeaderTitle, Texts, Middle, NameTitle, Scroller, ListArea, LoadingIcon, Buttons, ButtonTitle } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import AccountIcon from '../../assets/account.svg';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Api from '../../Api';
+import ProfessorItem from '../../components/ProfessorItem';
 
 export default () => {
     const navigation = useNavigation();
@@ -23,6 +24,12 @@ export default () => {
     const [pesoAluno, setPeso] = useState('');
     const [prefHorario, setPrefHorario] = useState('');
     const [restrMedicas, setRestrMedicas] = useState('');
+
+    
+    const [loading, setLoading] = useState(false);
+    const [list, setList] = useState([]);
+    const [prof, setProf] = useState('');
+    const [refreshing, setRefreshing] = useState(false);
     
     
 
@@ -54,10 +61,31 @@ export default () => {
         } 
     };
 
+    const onRefresh = () => {
+        setRefreshing(false);
+        getAulaUser();
+      }
+
+    const getProfessoresById = async () => {
+        const alunoID = await AsyncStorage.getItem('alunoID');
+        setLoading(true);
+        setList([]);
+        setProf();
+        let userProfs = await Api.getUserProf(alunoID);
+        const profID = userProfs[0].professorID
+
+        let res = await Api.getProfessoresById(profID);
+            if(res) {
+                setList(res)
+            }
+        setLoading(false);
+      };
+
     useEffect(() => {
       getAlunoById();
       getUsuarioById();
-    });
+      getProfessoresById();
+    },[navigation]);
 
     const handleLogoutClick = async () => {
         await AsyncStorage.setItem('token', "invalid");
@@ -96,6 +124,20 @@ export default () => {
             <Texts>Preferência de Horário: {prefHorario}</Texts>
             <Texts>Restrições Médicas: {restrMedicas}</Texts>
 
+            <Texts>Meus Professores:</Texts>
+            {loading&&
+                  <LoadingIcon size="large" color="#007BFF"/>
+                  }
+
+                  <ListArea>
+                  {list.length === 0 ? (
+                      <Text>Nenhum professor por enquanto!</Text>
+                  ) : (
+                      list.map((item, k) => (
+                      <ProfessorItem key={k} data={item} />
+                      ))
+                  )}
+                  </ListArea>
             
             <Buttons onPress={handleAcompanhamentoClick}>
                 <ButtonTitle>Acompanhamento</ButtonTitle>
