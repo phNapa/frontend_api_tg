@@ -16,7 +16,6 @@ export default () => {
     const [refreshing, setRefreshing] = useState(false);
     const getAulaUser = async () => {
         const alunoID = await AsyncStorage.getItem('alunoID');
-        console.log(alunoID)
         setLoading(true);
         setList([]);
         if(alunoID) {

@@ -14,7 +14,6 @@ export default {
                 "senha": `${password}`
             }),
             });
-          console.log(req)
             const json = await req.json();
             return json;
     },
@@ -75,7 +74,7 @@ export default {
         const json = await req.json();
         return json;
     },
-    createAluno: async(altura, nivelExperiencia, objetivos, pesoOrigem, prefHorario, restrMedicas, userID) => {
+    createAluno: async(altura, nivelExperiencia, objetivos, pesoOrigem, prefHorario, restrMedicas, userID, imc) => {
         const req = await fetch(`${BASE_API}/aluno`,{
             method: 'POST',
             headers: {
@@ -89,7 +88,8 @@ export default {
                 "pesoOrigem": `${pesoOrigem}`,
                 "prefHorario": `${prefHorario}`,
                 "restrMedicas": `${restrMedicas}`,
-                "userID": `${userID}`
+                "userID": `${userID}`,
+                "imc": `${imc}`
             })
             
         });

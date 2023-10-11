@@ -57,7 +57,6 @@ const ExerciseScreen = () => {
 
   const handleDeleteAula = async () => {
     if(aulaID) {
-      console.log(aulaID)
         let res = await Api.deleteAula(aulaID);
         setIsConfirmationVisible(false);
         alert("Aula apagada com Sucesso!")

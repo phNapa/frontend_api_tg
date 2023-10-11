@@ -15,18 +15,26 @@ const CreateAlunoScreen = () => {
   const [prefHorario, setPrefHorario] = useState('Manhã');
   const [restrMedicas, setRestricoesMedicas] = useState('');
   const [error, setError] = useState('');
+  const [imc, setIMC] = useState('');
   const [showError, setShowError] = useState(false);
   const [userID, setUserID] = useState('');
 
   const navigation = useNavigation();
 
-  const handleSignClick = async () => {
+  const calcularIMC = () => {
+    if (altura && pesoOrigem) {
+      const alturaEmMetros = altura / 100;
+      const imcCalculado = pesoOrigem / (alturaEmMetros * alturaEmMetros);
+      setIMC(imcCalculado.toFixed(2));
+    }
+  };
 
+  const handleSignClick = async () => {
+  calcularIMC();
   const userID = await AsyncStorage.getItem('userID');
   if (altura && nivelExperiencia && objetivos && pesoOrigem && prefHorario && restrMedicas) {
     try {
-      const res = await Api.createAluno(altura, nivelExperiencia, objetivos, pesoOrigem, prefHorario, restrMedicas, userID);
-      
+      const res = await Api.createAluno(altura, nivelExperiencia, objetivos, pesoOrigem, prefHorario, restrMedicas, userID, imc);
       if (res.insertId) {
         alert("Preenchimento concluído, faça login na aplicação!");
         navigation.reset({

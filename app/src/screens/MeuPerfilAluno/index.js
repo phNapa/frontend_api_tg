@@ -72,12 +72,15 @@ export default () => {
         setList([]);
         setProf();
         let userProfs = await Api.getUserProf(alunoID);
-        const profID = userProfs[0].professorID
-
-        let res = await Api.getProfessoresById(profID);
-            if(res) {
-                setList(res)
+            if (userProfs && userProfs.length > 0) {
+                const profID = userProfs[0].professorID;
+                let res = await Api.getProfessoresById(profID);
+                if (res) {
+                    setList(res);
+                }
             }
+            
+        
         setLoading(false);
       };
 

@@ -39,7 +39,6 @@ export default () => {
         'whatsapp://send?text=' + "oi" + '&phone=55' + contato;
       Linking.openURL(url)
         .then((data) => {
-          console.log('WhatsApp Opened');
         })
         .catch(() => {
           alert('WhatsApp não está instalado!');

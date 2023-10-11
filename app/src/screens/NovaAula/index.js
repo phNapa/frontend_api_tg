@@ -46,7 +46,6 @@ export default () => {
     };
 
     const postNewExercicio = async () => {
-      console.log(newExercicio)
       try {
         if(newExercicio){
           const res = await Api.postNovoExercicio(newExercicio);
