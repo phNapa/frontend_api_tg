@@ -32,13 +32,13 @@ export const Middle = styled.View`
 export const Buttons = styled.TouchableOpacity`
   flex-direction: row;
   background-color: #007BFF;
-  width: 30%;
+  width: 50%;
   height: 5%;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
   margin: 5px;
-  margin-left: 70%;
+  margin-left: 50%;
 `;
 
 export const ButtonTitle = styled.Text`

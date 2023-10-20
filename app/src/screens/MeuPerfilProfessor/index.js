@@ -16,16 +16,9 @@ export default () => {
         });
     }
 
-    const handleAcompanhamentoClick = async () => {
-        navigation.navigate('Acompanhamento', {});
-    }
-
     return(
         <Container>
                 <Text>Meu Perfil Professor</Text>
-                <Buttons onPress={handleAcompanhamentoClick}>
-                    <ButtonTitle>Acompanhamento</ButtonTitle>
-                </Buttons>
                 <Buttons onPress={handleLogoutClick}>
                     <ButtonTitle>Sair</ButtonTitle>
                 </Buttons>

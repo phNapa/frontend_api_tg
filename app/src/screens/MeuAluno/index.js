@@ -67,6 +67,12 @@ export default () => {
         cidade: cidade,
     });
     };
+
+    const handleAcompanhamentoClick = async () => {
+      navigation.navigate('Acompanhamento', {
+        alunoID: alunoID,
+      });
+  }
     
     return(
         <Container>
@@ -88,6 +94,11 @@ export default () => {
             <Texts>Peso: {pesoAluno} Kg</Texts>
             <Texts>Altura: {alturaAluno}</Texts>
             <Texts>IMC: {imcAluno}</Texts>
+
+            <Buttons onPress={handleAcompanhamentoClick}>
+                    <ButtonTitle>Acompanhamento</ButtonTitle>
+            </Buttons>
+            
             <Buttons onPress={handleNovaAula}>
               <ButtonTitle>Nova Aula</ButtonTitle>
             </Buttons>

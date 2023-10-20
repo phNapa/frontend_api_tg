@@ -72,13 +72,13 @@ export default ({ state, navigation}) => {
     return (
         <TabArea>
             <TabItem onPress={ReqsProfOrProfList}>
-                <HomeIcon style={{opacity: state.index === 1 || state.index === 5 ? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
+                <HomeIcon style={{opacity: state.index === 1 || state.index === 6 ? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
             <TabItemCenter onPress={AlunosListOrAulasList}>
-                <TodayIcon style={{opacity: state.index === 0 || state.index === 6 ? 1 : 0.5,}} width="50" height="50" fill="#007BFF" />
+                <TodayIcon style={{opacity: state.index === 0 || state.index === 7 ? 1 : 0.5}} width="50" height="50" fill="#007BFF" />
             </TabItemCenter>
             <TabItem onPress={PerfilProfOrAluno}>
-                <AccountIcon style={{opacity: state.index===2? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
+                <AccountIcon style={{opacity: state.index===3 || state.index === 2 ? 1 : 0.5}} width="24" height="24" fill="#FFFFFF" />
             </TabItem>
         </TabArea>
     );
