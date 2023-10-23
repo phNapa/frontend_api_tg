@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -21,16 +21,18 @@ const CreateAlunoScreen = () => {
 
   const navigation = useNavigation();
 
-  const calcularIMC = () => {
+  useEffect(() => {
     if (altura && pesoOrigem) {
-      const alturaEmMetros = altura / 100;
-      const imcCalculado = pesoOrigem / (alturaEmMetros * alturaEmMetros);
+      const alturaMetros = altura / 100;
+      const imcCalculado = parseFloat(pesoOrigem) / (alturaMetros * alturaMetros);
+
       setIMC(imcCalculado.toFixed(2));
+    } else {
+      setIMC(null);
     }
-  };
+  }, [altura, pesoOrigem]);
 
   const handleSignClick = async () => {
-  calcularIMC();
   const userID = await AsyncStorage.getItem('userID');
   if (altura && nivelExperiencia && objetivos && pesoOrigem && prefHorario && restrMedicas) {
     try {
@@ -59,17 +61,6 @@ const CreateAlunoScreen = () => {
       <View style={styles.container}>
         <GymLogo width="100%" height="80"/>
         <Text style={styles.text}>Detalhes do aluno</Text>
-        <View width="80%">
-          <Text style={styles.text}>Altura</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Altura (Ex. 170)"
-            placeholderTextColor="#007BFF"
-            backgroundColor="#D1E5FF"
-            onChangeText={(text) => setAltura(text)}
-            keyboardType="numeric"
-          />
-        </View>
         
         <View width="80%">
           <Text style={styles.text}>Nivel de experiência</Text>
@@ -88,23 +79,42 @@ const CreateAlunoScreen = () => {
           <Text style={styles.text}>Objetivos</Text>
           <TextInput
             style={styles.input}
-            placeholder="Ex. Fraturas"
+            placeholder="Ex. Fraturas, ganho de massa..."
             placeholderTextColor="#007BFF"
             backgroundColor="#D1E5FF"
             onChangeText={(text) => setObjetivos(text)}
           />
         </View>
+
+        <View width="80%">
+          <Text style={styles.text}>Altura</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="(Ex. 170) em Cm"
+            placeholderTextColor="#007BFF"
+            backgroundColor="#D1E5FF"
+            onChangeText={(text) => setAltura(text)}
+            keyboardType="numeric"
+          />
+        </View>
+
         <View width="80%">
           <Text style={styles.text}>Peso Atual</Text>
           <TextInput
             style={styles.input}
-            placeholder="(Ex. 75)"
+            placeholder="(Ex. 75) em Kg"
             placeholderTextColor="#007BFF"
             backgroundColor="#D1E5FF"
             onChangeText={(text) => setPesoOrigem(text)}
             keyboardType="numeric"
           />
         </View>
+
+        {imc !== null && (
+        <View width="80%">
+          <Text style={styles.text}>IMC: {imc}</Text>
+        </View>
+        )}
 
         <View width="80%">
           <Text style={styles.text}>Preferência de Horário</Text>
@@ -123,7 +133,7 @@ const CreateAlunoScreen = () => {
           <Text style={styles.text}>Restrições Médicas</Text>
           <TextInput
             style={styles.input}
-            placeholder="Restrições Médicas"
+            placeholder="Alergias, doenças crônicas, etc"
             placeholderTextColor="#007BFF"
             backgroundColor="#D1E5FF"
             onChangeText={(text) => setRestricoesMedicas(text)}
