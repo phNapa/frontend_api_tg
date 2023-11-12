@@ -1,4 +1,4 @@
-const BASE_API = 'https://backendapitg-production-0590.up.railway.app';
+const BASE_API = 'backendapitg-production.up.railway.app';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default {
